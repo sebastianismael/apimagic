@@ -21,5 +21,12 @@ public class ControladorBasico {
         return apiService.saludar(nombre);
     }
 
+    @GetMapping("/crear/{nombre}")
+    public String crear(@PathVariable("nombre") String nombre){
+        logger.info("creando a " + nombre);
+        apiService.crear(nombre);
+        return "=)";
+    }
+
 
 }
