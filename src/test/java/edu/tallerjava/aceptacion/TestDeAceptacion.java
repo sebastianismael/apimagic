@@ -1,6 +1,8 @@
 package edu.tallerjava.aceptacion;
 
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -26,6 +28,10 @@ public abstract class TestDeAceptacion {
 
     protected HttpURLConnection invocarAPI(String path, String httpMethod) throws Exception {
         return invocarAPI(path, httpMethod, null);
+    }
+
+    protected String obtenerRespuesta(HttpURLConnection connection) throws Exception {
+        return new BufferedReader(new InputStreamReader(connection.getInputStream())).readLine();
     }
 
 }

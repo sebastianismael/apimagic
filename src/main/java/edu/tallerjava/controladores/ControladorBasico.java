@@ -1,12 +1,11 @@
 package edu.tallerjava.controladores;
 
+import edu.tallerjava.modelo.Usuario;
 import edu.tallerjava.servicios.ApiService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ControladorBasico {
@@ -15,20 +14,20 @@ public class ControladorBasico {
     @Autowired
     private ApiService apiService;
 
-    @GetMapping("/saludar/{nombre}")
+    @GetMapping(path = "/saludar/{nombre}")
     public Saludo saludar(@PathVariable("nombre") String nombre){
         logger.info("saludando a " + nombre);
         return apiService.saludar(nombre);
     }
 
-    @GetMapping("/crear/{nombre}")
-    public String crear(@PathVariable("nombre") String nombre){
-        logger.info("creando a " + nombre);
-        apiService.crear(nombre);
+    @PostMapping(path = "/crear", consumes = "application/json")
+    public String crear(@RequestBody Usuario usuario){
+        logger.info("creando a " + usuario.getNombre());
+        apiService.crear(usuario.getNombre());
         return "=)";
     }
 
-    @GetMapping("/isAlive")
+    @GetMapping(path = "/isAlive")
     public String crear(){
         return "=)";
     }
