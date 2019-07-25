@@ -3,12 +3,13 @@ package edu.tallerjava.persistencia;
 import edu.tallerjava.SpringTest;
 import edu.tallerjava.modelo.Usuario;
 import org.junit.Test;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class UsuarioTest extends SpringTest {
 
-    @Test
+    @Test @Transactional
     public void save(){
         Usuario juan = new Usuario();
         juan.setNombre("juan");
