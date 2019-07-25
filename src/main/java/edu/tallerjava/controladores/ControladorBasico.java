@@ -28,5 +28,8 @@ public class ControladorBasico {
         return "=)";
     }
 
-
+    @GetMapping("/isAlive")
+    public String crear(){
+        return "=)";
+    }
 }
