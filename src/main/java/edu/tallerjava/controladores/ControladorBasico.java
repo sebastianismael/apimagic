@@ -12,13 +12,4 @@ public class ControladorBasico {
     }
 
 
-    private class Saludo {
-        public Saludo(String nombre, String saludo){
-            this.nombre = nombre;
-            this.saludo = saludo;
-        }
-        String nombre;
-        String saludo;
-    }
-
 }
