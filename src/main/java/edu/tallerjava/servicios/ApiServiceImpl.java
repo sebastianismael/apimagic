@@ -24,6 +24,7 @@ public class ApiServiceImpl implements ApiService{
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
     public void create(String name) {
         Category category = new Category();
+        category.setId("QUERTY");
         category.setName(name);
         categoryRepository.save(category);
     }

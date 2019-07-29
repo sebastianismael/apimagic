@@ -15,17 +15,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UsuarioTest {
+public class CategoryTest {
 
     @Autowired
     private EntityManager entityManager;
 
     @Test @Transactional @Rollback
     public void save(){
-        Category juan = new Category();
-        juan.setName("juan");
-
-        entityManager.persist(juan);
-        assertThat(entityManager.find(Category.class, juan.getId())).isNotNull();
+        Category c1 = new Category();
+        c1.setName("juan");
+        c1.setId("QUERTY");
+        entityManager.persist(c1);
+        assertThat(entityManager.find(Category.class, c1.getId())).isNotNull();
     }
 }
