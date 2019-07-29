@@ -1,6 +1,6 @@
 package edu.tallerjava.aceptacion;
 
-import edu.tallerjava.modelo.Usuario;
+import edu.tallerjava.modelo.Category;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class BasicoAceptacionTest {
+public class BasicAcceptanceTest {
 
     @LocalServerPort
     private int port;
@@ -35,17 +35,17 @@ public class BasicoAceptacionTest {
     }
 
     @Test
-    public void saludar() {
+    public void hi() {
         String nombre = "juan";
-        String json = this.restTemplate.getForObject(url + "/saludar/" + nombre, String.class);
-        assertThat(json).isEqualTo("{\"nombre\":\"" + nombre + "\",\"saludo\":\"Hola " + nombre + "\"}");
+        String json = this.restTemplate.getForObject(url + "/hi/" + nombre, String.class);
+        assertThat(json).isEqualTo("{\"name\":\"" + nombre + "\",\"hi\":\"Hola " + nombre + "\"}");
     }
 
     @Test
-    public void crear() throws Exception {
-        Usuario usuario = new Usuario();
-        usuario.setNombre("Ana");
-        String json = this.restTemplate.postForObject(url + "/crear", usuario, String.class);
+    public void create() throws Exception {
+        Category category = new Category();
+        category.setName("Ana");
+        String json = this.restTemplate.postForObject(url + "/create", category, String.class);
         assertThat(json).isEqualTo("=)");
     }
 

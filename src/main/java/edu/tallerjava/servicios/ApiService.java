@@ -1,10 +1,10 @@
 package edu.tallerjava.servicios;
 
-import edu.tallerjava.controladores.Saludo;
+import edu.tallerjava.controladores.Hi;
 
 public interface ApiService {
 
-    Saludo saludar(String nombre);
+    Hi hi(String name);
 
-    void crear(String nombre);
+    void create(String name);
 }

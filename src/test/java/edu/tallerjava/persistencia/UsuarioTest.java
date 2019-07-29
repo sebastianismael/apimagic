@@ -1,6 +1,6 @@
 package edu.tallerjava.persistencia;
 
-import edu.tallerjava.modelo.Usuario;
+import edu.tallerjava.modelo.Category;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +22,10 @@ public class UsuarioTest {
 
     @Test @Transactional @Rollback
     public void save(){
-        Usuario juan = new Usuario();
-        juan.setNombre("juan");
+        Category juan = new Category();
+        juan.setName("juan");
 
         entityManager.persist(juan);
-        assertThat(entityManager.find(Usuario.class, juan.getId())).isNotNull();
+        assertThat(entityManager.find(Category.class, juan.getId())).isNotNull();
     }
 }
