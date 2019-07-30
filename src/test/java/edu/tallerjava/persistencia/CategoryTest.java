@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,5 +28,11 @@ public class CategoryTest {
         c1.setId("QUERTY");
         entityManager.persist(c1);
         assertThat(entityManager.find(Category.class, c1.getId())).isNotNull();
+    }
+
+    @Test
+    @Sql("/sql/createCategories.sql")
+    public void testPersistencia(){
+        assertThat(entityManager.createQuery("from Category").getResultList()).hasSize(2);
     }
 }

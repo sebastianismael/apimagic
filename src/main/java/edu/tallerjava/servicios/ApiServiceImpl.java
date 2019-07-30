@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service("ApiService")
 @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
 public class ApiServiceImpl implements ApiService{
@@ -28,4 +30,11 @@ public class ApiServiceImpl implements ApiService{
         category.setName(name);
         categoryRepository.save(category);
     }
+
+    @Override
+    public List<Category> findAll() {
+        return categoryRepository.findAll();
+    }
+
+
 }
