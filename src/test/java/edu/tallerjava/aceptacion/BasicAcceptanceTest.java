@@ -23,7 +23,7 @@ public class BasicAcceptanceTest extends AcceptanceTest{
     @Test
     public void create() throws Exception {
         Category category = new Category();
-        category.setName("Ana");
+        category.setNombre("Ana");
         String json = this.restTemplate.postForObject(url + "/create", category, String.class);
         assertThat(json).isEqualTo("=)");
     }

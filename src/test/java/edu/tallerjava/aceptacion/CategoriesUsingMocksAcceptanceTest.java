@@ -22,11 +22,11 @@ public class CategoriesUsingMocksAcceptanceTest extends AcceptanceTest{
         List<Category> list = new LinkedList<>();
         Category c1 = new Category();
         c1.setId("MLA5725");
-        c1.setName("Accesorios para Vehículos");
+        c1.setNombre("Accesorios para Vehículos");
         list.add(c1);
         Category c2 = new Category();
         c2.setId("MLA1403");
-        c2.setName("Alimentos y Bebidas");
+        c2.setNombre("Alimentos y Bebidas");
         list.add(c2);
 
         when(categoryRepository.findAll()).thenReturn(list);

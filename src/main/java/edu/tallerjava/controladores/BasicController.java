@@ -22,8 +22,8 @@ public class BasicController {
 
     @PostMapping(path = "/create", consumes = "application/json")
     public String create(@RequestBody Category usuario){
-        logger.info("creating " + usuario.getName());
-        apiService.create(usuario.getName());
+        logger.info("creating " + usuario.getNombre());
+        apiService.create(usuario.getNombre());
         return "=)";
     }
 

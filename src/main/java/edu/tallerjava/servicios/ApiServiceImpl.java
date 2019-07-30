@@ -27,7 +27,7 @@ public class ApiServiceImpl implements ApiService{
     public void create(String name) {
         Category category = new Category();
         category.setId("QUERTY");
-        category.setName(name);
+        category.setNombre(name);
         categoryRepository.save(category);
     }
 
