@@ -25,9 +25,9 @@ public class CategoryTest {
     public void save(){
         Category c1 = new Category();
         c1.setNombre("juan");
-        c1.setId("QUERTY");
+        c1.setCodigo("QUERTY");
         entityManager.persist(c1);
-        assertThat(entityManager.find(Category.class, c1.getId())).isNotNull();
+        assertThat(entityManager.find(Category.class, c1.getCodigo())).isNotNull();
     }
 
     @Test

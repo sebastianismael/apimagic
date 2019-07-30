@@ -7,15 +7,15 @@ import javax.persistence.Id;
 public class Category {
 
 	@Id
-	private String id;
+	private String codigo;
 	private String nombre;
 
-	public String getId() {
-		return id;
+	public String getCodigo() {
+		return codigo;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getNombre() {
