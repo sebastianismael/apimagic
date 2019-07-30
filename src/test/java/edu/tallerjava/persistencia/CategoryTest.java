@@ -33,6 +33,6 @@ public class CategoryTest {
     @Test
     @Sql("/sql/createCategories.sql")
     public void testPersistencia(){
-        assertThat(entityManager.createQuery("from Category").getResultList()).hasSize(2);
+        assertThat(entityManager.createQuery("from Category").getResultList()).hasSize(8);
     }
 }
