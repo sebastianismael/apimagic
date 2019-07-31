@@ -2,6 +2,7 @@ package edu.tallerjava.aceptacion;
 
 import edu.tallerjava.modelo.Category;
 import edu.tallerjava.repositorios.CategoryRepository;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
@@ -17,6 +18,7 @@ public class CategoriesUsingMocksAcceptanceTest extends AcceptanceTest{
     private CategoryRepository categoryRepository;
 
     @Test
+    @Ignore
     public void findAll() {
 
         List<Category> list = new LinkedList<>();

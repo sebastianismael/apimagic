@@ -24,8 +24,8 @@ public class CategoryTest {
     @Test @Transactional @Rollback
     public void save(){
         Category category = new Category();
-        category.setNombre("juan");
-        category.setCodigo("QUERTY");
+        category.setNombre("Accesorios para Vehículos");
+        category.setCodigo("MLA5725");
         entityManager.persist(category);
         assertThat(entityManager.find(Category.class, category.getId())).isNotNull();
     }
