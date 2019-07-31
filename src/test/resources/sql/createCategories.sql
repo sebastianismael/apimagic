@@ -1,3 +1,5 @@
+delete from Category;
+
 insert into Category (codigo, nombre, permalink) values ('MLA5725','Accesorios para Vehículos', 'http://home.mercadolibre.com.ar/vehiculos-accesorios/');
 insert into Category (codigo, nombre, permalink) values ('MLA1403','Alimentos y Bebidas', 'http://home.mercadolibre.com.ar/alimentos-bebidas/');
 insert into Category (codigo, nombre, permalink) values ('MLA1071','Animales y Mascotas', 'http://home.mercadolibre.com.ar/animales-y-mascotas/');
