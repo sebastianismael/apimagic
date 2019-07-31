@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service("ApiService")
 @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
@@ -34,6 +35,11 @@ public class ApiServiceImpl implements ApiService{
     @Override
     public List<Category> findAll() {
         return categoryRepository.findAll();
+    }
+
+    @Override
+    public Optional<Category> getCategory(Long id) {
+        return categoryRepository.findById(id);
     }
 
 
