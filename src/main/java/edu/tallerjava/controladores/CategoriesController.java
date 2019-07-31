@@ -3,6 +3,8 @@ package edu.tallerjava.controladores;
 import edu.tallerjava.modelo.Category;
 import edu.tallerjava.servicios.ApiService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,8 +19,9 @@ public class CategoriesController {
     private ApiService apiService;
 
     @GetMapping(path = "/categories")
-    public List<Category> list(){
-        return apiService.findAll();
+    public ResponseEntity<List<Category>> list(){
+        final List<Category> categories = apiService.findAll();
+        return new ResponseEntity(categories, HttpStatus.OK);
     }
 
     @GetMapping(path = "/categories/{id}")
