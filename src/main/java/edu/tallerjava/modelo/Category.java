@@ -13,6 +13,7 @@ public class Category {
 	private Long id;
 	private String codigo;
 	private String nombre;
+	private String permalink;
 
 	public Long getId() {
 		return id;
@@ -20,6 +21,14 @@ public class Category {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getPermalink() {
+		return permalink;
+	}
+
+	public void setPermalink(String permalink) {
+		this.permalink = permalink;
 	}
 
 	public String getCodigo() {

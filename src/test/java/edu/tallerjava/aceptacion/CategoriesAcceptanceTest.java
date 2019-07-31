@@ -21,7 +21,7 @@ public class CategoriesAcceptanceTest extends AcceptanceTest{
     @Sql(value = "/sql/createCategories.sql")
     public void getSingleCategory(){
         final Category category = this.restTemplate.getForObject(url + "/categories/1", Category.class);
-        assertThat(category.getNombre()).isEqualTo("Accesorios para Vehículos");
+        assertThat(category.getPermalink()).isEqualTo("http://home.mercadolibre.com.ar/vehiculos-accesorios/");
     }
 
 }
