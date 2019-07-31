@@ -25,10 +25,14 @@ public class CategoriesController {
     }
 
     @GetMapping(path = "/categories/{id}")
-    public Category getCategory(@PathVariable String id){
-        Optional<Category> categoria = apiService.getCategory(Long.parseLong(id));
+    public ResponseEntity<Category> getCategory(@PathVariable String id){
 
-        return categoria.orElseThrow(IllegalStateException::new);
+        Optional<Category> categoria = apiService.getCategory(Long.parseLong(id));
+        if(categoria.isPresent()){
+            return new ResponseEntity(categoria.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 
