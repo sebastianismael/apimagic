@@ -23,11 +23,11 @@ public class CategoryTest {
 
     @Test @Transactional @Rollback
     public void save(){
-        Category c1 = new Category();
-        c1.setNombre("juan");
-        c1.setCodigo("QUERTY");
-        entityManager.persist(c1);
-        assertThat(entityManager.find(Category.class, c1.getId())).isNotNull();
+        Category category = new Category();
+        category.setNombre("juan");
+        category.setCodigo("QUERTY");
+        entityManager.persist(category);
+        assertThat(entityManager.find(Category.class, category.getId())).isNotNull();
     }
 
     @Test
