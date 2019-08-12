@@ -1,6 +1,5 @@
 package edu.tallerjava.aceptacion;
 
-import edu.tallerjava.modelo.Category;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +28,7 @@ public abstract class AcceptanceTest {
         url = "http://localhost:" + port;
     }
 
-//    protected <T> List<T> exchangeAsList(String uri, T responseType) {
-//        exchangeAsList(url + "/categories", new ParameterizedTypeReference<List<responseType>>(){});
-//        return restTemplate.exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<List<responseType>>(){}).getBody();
-//    }
-
-    protected <T> List<T> exchangeGetAsList(String uri, ParameterizedTypeReference<List<T>> responseType) {
+    protected <T> List<T> getForObject(String uri, ParameterizedTypeReference<List<T>> responseType) {
         return restTemplate.exchange(uri, HttpMethod.GET, null, responseType).getBody();
     }
 }

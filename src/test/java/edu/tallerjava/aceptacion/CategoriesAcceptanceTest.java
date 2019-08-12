@@ -28,9 +28,8 @@ public class CategoriesAcceptanceTest extends AcceptanceTest{
     @Test
     @Sql(value = "/sql/createCategories.sql")
     public void getSingleCategory(){
-        final List<Category> categories = exchangeGetAsList(url + "/categories", new ParameterizedTypeReference<List<Category>>() {});
+        final List<Category> categories = getForObject(url + "/categories", new ParameterizedTypeReference<List<Category>>() {});
         String uri = url + "/categories/" + categories.get(0).getId();
-//        exchangeAsList(url + "/categories", Category.class);
 
         final ResponseEntity<Category> responseEntity = restTemplate.getForEntity(uri, Category.class);
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
