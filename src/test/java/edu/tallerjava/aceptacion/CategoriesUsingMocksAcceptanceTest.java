@@ -1,7 +1,7 @@
 package edu.tallerjava.aceptacion;
 
 import edu.tallerjava.modelo.Category;
-import edu.tallerjava.repositorios.CategoryRepository;
+import edu.tallerjava.repository.CategoryRepository;
 import org.junit.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 

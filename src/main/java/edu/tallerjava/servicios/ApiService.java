@@ -14,5 +14,7 @@ public interface ApiService {
 
     List<Category> findAll();
 
+    List<Category> buscarTodos();
+
     Optional<Category> getCategory(Long id);
 }

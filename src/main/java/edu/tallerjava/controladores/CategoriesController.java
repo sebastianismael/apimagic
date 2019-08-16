@@ -22,6 +22,12 @@ public class CategoriesController {
         return new ResponseEntity(categories, HttpStatus.OK);
     }
 
+    @GetMapping(path = "/categorias")
+    public ResponseEntity<List<Category>> todas(){
+        final List<Category> categories = apiService.buscarTodos();
+        return new ResponseEntity(categories, HttpStatus.OK);
+    }
+
     @PostMapping(path = "/categories")
     public ResponseEntity<Category> create(){
         Category category = new Category();

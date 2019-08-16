@@ -2,7 +2,7 @@ package edu.tallerjava.servicios;
 
 import edu.tallerjava.controladores.Hi;
 import edu.tallerjava.modelo.Category;
-import edu.tallerjava.repositorios.CategoryRepository;
+import edu.tallerjava.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -38,9 +38,16 @@ public class ApiServiceImpl implements ApiService{
     }
 
     @Override
+    public List<Category> buscarTodos() {
+        return categoryRepository.buscarTodos();
+    }
+
+    @Override
     public Optional<Category> getCategory(Long id) {
         return categoryRepository.findById(id);
     }
 
-
+    public void setCategoryRepository(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
+    }
 }
