@@ -5,9 +5,7 @@ import edu.tallerjava.servicios.ApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +22,13 @@ public class CategoriesController {
         return new ResponseEntity(categories, HttpStatus.OK);
     }
 
+    @PostMapping(path = "/categories")
+    public ResponseEntity<Category> create(){
+        Category category = new Category();
+        category.setId(6543L);
+        return new ResponseEntity(category, HttpStatus.OK);
+    }
+
     @GetMapping(path = "/categories/{id}")
     public ResponseEntity<Category> getCategory(@PathVariable String id){
 
@@ -31,7 +36,7 @@ public class CategoriesController {
         if(categoria.isPresent()){
             return new ResponseEntity(categoria.get(), HttpStatus.OK);
         } else {
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
 

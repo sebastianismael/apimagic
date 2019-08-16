@@ -42,7 +42,24 @@ public class CategoriesAcceptanceTest extends AcceptanceTest{
     @Sql(value = "/sql/createCategories.sql")
     public void getInvalidCategory(){
         final ResponseEntity<Category> responseEntity = restTemplate.getForEntity(url + "/categories/9891", Category.class);
-        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
     }
+
+    @Test
+    public void createCategory(){
+        Category newCategory = new Category();
+        newCategory.setNombre("accesorios para limpieza felina");
+        newCategory.setCodigo("AFG");
+        newCategory.setPermalink("www.mercadolibre.com/klhjaK098GDSHKGADNJJK");
+        final ResponseEntity<Category> responseEntity = restTemplate
+                .postForEntity(url + "/categories", newCategory, Category.class);
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(responseEntity.getBody().getId()).isNotNull();
+    }
+
+
+
+
+
 
 }
