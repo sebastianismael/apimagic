@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long>, CustomizedCategoryRepository {
 
-    @Query("from Category where algo = ?1 and otro = ?2")
-    List<Category> buscarAlgo(String he, String h);
+    @Query("from Category where nombre = ?1")
+    List<Category> findByName(String name);
 }

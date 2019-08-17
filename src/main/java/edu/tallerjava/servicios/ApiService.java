@@ -17,4 +17,6 @@ public interface ApiService {
     List<Category> buscarTodos();
 
     Optional<Category> getCategory(Long id);
+
+    List<Category> findByName(String name);
 }

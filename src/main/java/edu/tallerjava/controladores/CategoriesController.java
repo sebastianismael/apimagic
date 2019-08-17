@@ -16,6 +16,13 @@ public class CategoriesController {
     @Autowired
     private ApiService apiService;
 
+
+    @GetMapping(path = "/categoriesByName/{name}")
+    public ResponseEntity<List<Category>> findByName(@PathVariable String name){
+        final List<Category> categories = apiService.findByName(name);
+        return new ResponseEntity(categories, HttpStatus.OK);
+    }
+
     @GetMapping(path = "/categories")
     public ResponseEntity<List<Category>> list(){
         final List<Category> categories = apiService.findAll();
