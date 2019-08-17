@@ -21,8 +21,8 @@ public class CategoriesAcceptanceTest extends AcceptanceTest{
     @Test
     @Sql(value = "/sql/createCategories.sql")
     public void buscarTodas(){
-        final List results = restTemplate.getForObject(url + "/categorias", List.class);
-        assertThat(results).hasSize(2);
+        final List results = restTemplate.getForObject(url + "/categoriesByCode/MLA1071", List.class);
+        assertThat(results).hasSize(1);
     }
 
     @Test

@@ -29,9 +29,9 @@ public class CategoriesController {
         return new ResponseEntity(categories, HttpStatus.OK);
     }
 
-    @GetMapping(path = "/categorias")
-    public ResponseEntity<List<Category>> todas(){
-        final List<Category> categories = apiService.buscarTodos();
+    @GetMapping(path = "/categoriesByCode/{code}")
+    public ResponseEntity<List<Category>> findByCode(@PathVariable String code){
+        final List<Category> categories = apiService.findByCode(code);
         return new ResponseEntity(categories, HttpStatus.OK);
     }
 

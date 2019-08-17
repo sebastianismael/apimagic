@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface CustomizedCategoryRepository {
 
-    List<Category> buscarTodos();
+    List<Category> findByCode(String code);
 }

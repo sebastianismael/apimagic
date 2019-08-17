@@ -38,8 +38,8 @@ public class ApiServiceImpl implements ApiService{
     }
 
     @Override
-    public List<Category> buscarTodos() {
-        return categoryRepository.buscarTodos();
+    public List<Category> findByCode(String code) {
+        return categoryRepository.findByCode(code);
     }
 
     @Override

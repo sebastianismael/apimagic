@@ -14,7 +14,7 @@ public interface ApiService {
 
     List<Category> findAll();
 
-    List<Category> buscarTodos();
+    List<Category> findByCode(String code);
 
     Optional<Category> getCategory(Long id);
 
