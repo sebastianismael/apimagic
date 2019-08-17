@@ -56,9 +56,9 @@ public class CategoriesAcceptanceTest extends AcceptanceTest{
     @Sql(value = "/sql/createCategories.sql")
     public void getSingleCategory(){
         final List<Category> categories = getForObject(url + "/categories", new ParameterizedTypeReference<List<Category>>() {});
-        String uri = url + "/categories/" + categories.get(0).getId();
 
-        final ResponseEntity<Category> responseEntity = restTemplate.getForEntity(uri, Category.class);
+        String uriForOneCategory = url + "/categories/" + categories.get(0).getId();
+        final ResponseEntity<Category> responseEntity = restTemplate.getForEntity(uriForOneCategory, Category.class);
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
 
         final Category category = responseEntity.getBody();
