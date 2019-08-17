@@ -35,7 +35,7 @@ public class CategoriesAcceptanceTest extends AcceptanceTest{
     @Test
     @Sql(value = "/sql/createCategories.sql")
     public void findAll(){
-        final List results = restTemplate.getForObject(url + "/categories", List.class);
+        final List results = getForObject(url + "/categories", new ParameterizedTypeReference<List<Category>>() {});
         assertThat(results).hasSize(8);
     }
 
