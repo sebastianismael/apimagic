@@ -52,6 +52,11 @@ public class ApiServiceImpl implements ApiService{
         return categoryRepository.findByName(name);
     }
 
+    @Override
+    public List<Category> findByCodeAndName(String code, String name) {
+        return categoryRepository.findByCodeAndName(code, name);
+    }
+
     public void setCategoryRepository(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }

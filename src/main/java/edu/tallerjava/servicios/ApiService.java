@@ -19,4 +19,6 @@ public interface ApiService {
     Optional<Category> getCategory(Long id);
 
     List<Category> findByName(String name);
+
+    List<Category> findByCodeAndName(String code, String name);
 }

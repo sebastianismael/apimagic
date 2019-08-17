@@ -17,6 +17,12 @@ public class CategoriesController {
     private ApiService apiService;
 
 
+    @GetMapping(path = "/categoriesByCodeAndName/{code}/{name}")
+    public ResponseEntity<List<Category>> findByCodeAndName(@PathVariable String code, @PathVariable String name){
+        final List<Category> categories = apiService.findByCodeAndName(code, name);
+        return new ResponseEntity(categories, HttpStatus.OK);
+    }
+
     @GetMapping(path = "/categoriesByName/{name}")
     public ResponseEntity<List<Category>> findByName(@PathVariable String name){
         final List<Category> categories = apiService.findByName(name);

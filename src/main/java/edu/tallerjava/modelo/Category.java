@@ -1,10 +1,13 @@
 package edu.tallerjava.modelo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@NamedQueries({
+		@NamedQuery(
+				name = "findCategoryByCodeAndName",
+				query = "from Category c where c.codigo=:code and c.nombre=:name"
+		)
+})
 @Entity
 public class Category {
 

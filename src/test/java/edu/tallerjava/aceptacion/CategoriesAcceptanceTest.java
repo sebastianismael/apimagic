@@ -20,7 +20,14 @@ public class CategoriesAcceptanceTest extends AcceptanceTest{
 
     @Test
     @Sql(value = "/sql/createCategories.sql")
-    public void buscarTodas(){
+    public void findByCodeAndName(){
+        final List results = restTemplate.getForObject(url + "/categoriesByCodeAndName/MLA1071/Animales y Mascotas", List.class);
+        assertThat(results).hasSize(1);
+    }
+
+    @Test
+    @Sql(value = "/sql/createCategories.sql")
+    public void findByCode(){
         final List results = restTemplate.getForObject(url + "/categoriesByCode/MLA1071", List.class);
         assertThat(results).hasSize(1);
     }
