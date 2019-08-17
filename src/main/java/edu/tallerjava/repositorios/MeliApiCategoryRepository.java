@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface MeliApiCategoryRepository {
     List<MeliCategory> findAll();
+    MeliCategory findByCode(String code);
 }

@@ -5,6 +5,7 @@ public class CategoryDto {
     private Long id;
     private String codigo;
     private String nombre;
+    private String permalink;
 
     public Long getId() {
         return id;
@@ -28,5 +29,13 @@ public class CategoryDto {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getPermalink() {
+        return permalink;
+    }
+
+    public void setPermalink(String permalink) {
+        this.permalink = permalink;
     }
 }

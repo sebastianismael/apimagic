@@ -15,7 +15,7 @@ public interface ApiService {
 
     List<CategoryDto> findAll();
 
-    List<Category> findByCode(String code);
+    CategoryDto findByCode(String code);
 
     Optional<Category> getCategory(Long id);
 

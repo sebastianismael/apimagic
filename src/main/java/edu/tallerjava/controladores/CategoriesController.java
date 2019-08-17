@@ -38,8 +38,8 @@ public class CategoriesController {
 
     @GetMapping(path = "/categoriesByCode/{code}")
     public ResponseEntity<List<Category>> findByCode(@PathVariable String code){
-        final List<Category> categories = apiService.findByCode(code);
-        return new ResponseEntity(categories, HttpStatus.OK);
+        final CategoryDto categoryDto = apiService.findByCode(code);
+        return new ResponseEntity(categoryDto, HttpStatus.OK);
     }
 
     @PostMapping(path = "/categories")

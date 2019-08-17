@@ -41,12 +41,7 @@ public class ApiServiceImpl implements ApiService{
     @Override
     public List<CategoryDto> findAll() {
 
-        Function<MeliCategory, CategoryDto> convert = meliCategory -> {
-            CategoryDto categoryDto = new CategoryDto();
-            categoryDto.setCodigo(meliCategory.getId());
-            categoryDto.setNombre(meliCategory.getName());
-            return categoryDto;
-        };
+        Function<MeliCategory, CategoryDto> convert = convertMeliCategoryToCategoryDtoFunction();
 
         List<CategoryDto> categories = meliApiCategoryRepository.findAll().stream()
                 .map(convert)
@@ -55,8 +50,9 @@ public class ApiServiceImpl implements ApiService{
     }
 
     @Override
-    public List<Category> findByCode(String code) {
-        return categoryRepository.findByCode(code);
+    public CategoryDto findByCode(String code) {
+        final MeliCategory meliCategory = meliApiCategoryRepository.findByCode(code);
+        return convertMeliCategoryToCategoryDtoFunction().apply(meliCategory);
     }
 
     @Override
@@ -76,5 +72,15 @@ public class ApiServiceImpl implements ApiService{
 
     public void setCategoryRepository(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
+    }
+
+    private Function<MeliCategory, CategoryDto> convertMeliCategoryToCategoryDtoFunction() {
+        return meliCategory -> {
+            CategoryDto categoryDto = new CategoryDto();
+            categoryDto.setCodigo(meliCategory.getId());
+            categoryDto.setNombre(meliCategory.getName());
+            categoryDto.setPermalink(meliCategory.getPermalink());
+            return categoryDto;
+        };
     }
 }

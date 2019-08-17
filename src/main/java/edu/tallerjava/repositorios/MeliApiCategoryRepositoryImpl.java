@@ -21,6 +21,11 @@ public class MeliApiCategoryRepositoryImpl implements MeliApiCategoryRepository{
                 new ParameterizedTypeReference<List<MeliCategory>>() {});
     }
 
+    @Override
+    public MeliCategory findByCode(String code) {
+        return restTemplate.getForObject("https://api.mercadolibre.com/categories/" + code, MeliCategory.class);
+    }
+
     /**
      * Permite obtener como respuesta de un get un List tipado
      * @param uri path del servicio
