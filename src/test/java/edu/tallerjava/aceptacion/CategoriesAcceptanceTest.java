@@ -36,7 +36,6 @@ public class CategoriesAcceptanceTest extends AcceptanceTest{
     }
 
     @Test
-    @Sql(value = "/sql/createCategories.sql")
     public void findAll(){
         final List<CategoryDto> results = getForObject(url + "/categories", new ParameterizedTypeReference<List<CategoryDto>>() {});
         assertThat(results).hasSize(30);
