@@ -6,13 +6,6 @@ public class CategoryDto {
     private String codigo;
     private String nombre;
 
-    public CategoryDto(){}
-
-    public CategoryDto(String codigo, String nombre) {
-        this.codigo = codigo;
-        this.nombre = nombre;
-    }
-
     public Long getId() {
         return id;
     }

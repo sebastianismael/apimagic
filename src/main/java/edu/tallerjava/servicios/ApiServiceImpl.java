@@ -2,6 +2,7 @@ package edu.tallerjava.servicios;
 
 import edu.tallerjava.controladores.Hi;
 import edu.tallerjava.dto.CategoryDto;
+import edu.tallerjava.dto.MeliCategory;
 import edu.tallerjava.modelo.Category;
 import edu.tallerjava.repositorios.CategoryRepository;
 import edu.tallerjava.repositorios.MeliApiCategoryRepository;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service("ApiService")
@@ -39,8 +41,15 @@ public class ApiServiceImpl implements ApiService{
     @Override
     public List<CategoryDto> findAll() {
 
+        Function<MeliCategory, CategoryDto> convert = meliCategory -> {
+            CategoryDto categoryDto = new CategoryDto();
+            categoryDto.setCodigo(meliCategory.getId());
+            categoryDto.setNombre(meliCategory.getName());
+            return categoryDto;
+        };
+
         List<CategoryDto> categories = meliApiCategoryRepository.findAll().stream()
-                .map(meliCategory -> new CategoryDto(meliCategory.getId(), meliCategory.getName()))
+                .map(convert)
                 .collect(Collectors.toList());
         return categories;
     }
