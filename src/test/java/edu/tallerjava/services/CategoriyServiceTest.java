@@ -1,7 +1,7 @@
 package edu.tallerjava.services;
 
 import edu.tallerjava.modelo.Category;
-import edu.tallerjava.repository.CategoryRepository;
+import edu.tallerjava.repositorios.CategoryRepository;
 import edu.tallerjava.servicios.ApiServiceImpl;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;

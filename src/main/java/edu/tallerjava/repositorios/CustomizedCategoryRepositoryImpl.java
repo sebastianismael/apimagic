@@ -1,4 +1,4 @@
-package edu.tallerjava.repository;
+package edu.tallerjava.repositorios;
 
 import edu.tallerjava.modelo.Category;
 import org.springframework.stereotype.Repository;
