@@ -1,6 +1,7 @@
 package edu.tallerjava.servicios;
 
 import edu.tallerjava.controladores.Hi;
+import edu.tallerjava.dto.CategoryDto;
 import edu.tallerjava.modelo.Category;
 import edu.tallerjava.repositorios.CategoryRepository;
 import edu.tallerjava.repositorios.MeliApiCategoryRepository;
@@ -36,10 +37,10 @@ public class ApiServiceImpl implements ApiService{
     }
 
     @Override
-    public List<Category> findAll() {
+    public List<CategoryDto> findAll() {
 
-        List<Category> categories = meliApiCategoryRepository.findAll().stream()
-                .map(meliCategory -> new Category())
+        List<CategoryDto> categories = meliApiCategoryRepository.findAll().stream()
+                .map(meliCategory -> new CategoryDto(meliCategory.getId(), meliCategory.getName()))
                 .collect(Collectors.toList());
         return categories;
     }

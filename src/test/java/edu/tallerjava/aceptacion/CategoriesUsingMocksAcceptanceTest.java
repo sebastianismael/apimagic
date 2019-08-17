@@ -1,7 +1,9 @@
 package edu.tallerjava.aceptacion;
 
+import edu.tallerjava.dto.MeliCategory;
 import edu.tallerjava.modelo.Category;
 import edu.tallerjava.repositorios.CategoryRepository;
+import edu.tallerjava.repositorios.MeliApiCategoryRepository;
 import org.junit.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
@@ -14,22 +16,22 @@ import static org.mockito.Mockito.when;
 public class CategoriesUsingMocksAcceptanceTest extends AcceptanceTest{
 
     @MockBean
-    private CategoryRepository categoryRepository;
+    private MeliApiCategoryRepository meliApiCategoryRepository;
 
     @Test
     public void findAll() {
 
-        List<Category> list = new LinkedList<>();
-        Category c1 = new Category();
-        c1.setCodigo("MLA5725");
-        c1.setNombre("Accesorios para Vehículos");
+        List<MeliCategory> list = new LinkedList<>();
+        MeliCategory c1 = new MeliCategory();
+        c1.setId("MLA5725");
+        c1.setName("Accesorios para Vehículos");
         list.add(c1);
-        Category c2 = new Category();
-        c2.setCodigo("MLA1403");
-        c2.setNombre("Alimentos y Bebidas");
+        MeliCategory c2 = new MeliCategory();
+        c2.setId("MLA1403");
+        c2.setName("Alimentos y Bebidas");
         list.add(c2);
 
-        when(categoryRepository.findAll()).thenReturn(list);
+        when(meliApiCategoryRepository.findAll()).thenReturn(list);
 
         final List results = this.restTemplate.getForObject(url + "/categories", List.class);
         assertThat(results).hasSize(2);

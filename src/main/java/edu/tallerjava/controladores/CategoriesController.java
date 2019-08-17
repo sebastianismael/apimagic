@@ -1,5 +1,6 @@
 package edu.tallerjava.controladores;
 
+import edu.tallerjava.dto.CategoryDto;
 import edu.tallerjava.modelo.Category;
 import edu.tallerjava.servicios.ApiService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,8 @@ public class CategoriesController {
     }
 
     @GetMapping(path = "/categories")
-    public ResponseEntity<List<Category>> list(){
-        final List<Category> categories = apiService.findAll();
+    public ResponseEntity<List<CategoryDto>> list(){
+        final List<CategoryDto> categories = apiService.findAll();
         return new ResponseEntity(categories, HttpStatus.OK);
     }
 

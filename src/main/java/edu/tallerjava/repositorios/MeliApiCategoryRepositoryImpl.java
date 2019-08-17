@@ -11,7 +11,10 @@ public class MeliApiCategoryRepositoryImpl implements MeliApiCategoryRepository{
     public List<MeliCategory> findAll(){
         List<MeliCategory> results = new LinkedList<>();
         for(int i = 0; i < 30; i++){
-            results.add(new MeliCategory());
+            MeliCategory category = new MeliCategory();
+            category.setId("2");
+            category.setName("nombre");
+            results.add(category);
         }
         return results;
     }
