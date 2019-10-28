@@ -17,10 +17,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 // However, as using this arrangement with either RANDOM_PORT or DEFINED_PORT implicitly provides a real servlet environment,
 // HTTP client and server will run in separate threads, thus separate transactions.
 // Any transaction initiated on the server won’t rollback in this case.
-@Ignore
 public class CategoriesAcceptanceTest extends AcceptanceTest{
 
     @Test
+    @Ignore
     @Sql(value = "/sql/createCategories.sql")
     public void findAll(){
         final List results = restTemplate.getForObject(url + "/categories", List.class);
@@ -28,6 +28,7 @@ public class CategoriesAcceptanceTest extends AcceptanceTest{
     }
 
     @Test
+    @Ignore
     @Sql(value = "/sql/createCategories.sql")
     public void getSingleCategory(){
         final List<Category> categories = getForObject(url + "/categories", new ParameterizedTypeReference<List<Category>>() {});
@@ -41,6 +42,7 @@ public class CategoriesAcceptanceTest extends AcceptanceTest{
     }
 
     @Test
+    @Ignore
     @Sql(value = "/sql/createCategories.sql")
     public void getInvalidCategory(){
         final ResponseEntity<Category> responseEntity = restTemplate.getForEntity(url + "/categories/9891", Category.class);
