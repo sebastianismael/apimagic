@@ -1,6 +1,7 @@
 package edu.tallerjava.aceptacion;
 
 import edu.tallerjava.modelo.Category;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 // However, as using this arrangement with either RANDOM_PORT or DEFINED_PORT implicitly provides a real servlet environment,
 // HTTP client and server will run in separate threads, thus separate transactions.
 // Any transaction initiated on the server won’t rollback in this case.
+@Ignore
 public class CategoriesAcceptanceTest extends AcceptanceTest{
 
     @Test
