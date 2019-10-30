@@ -1,29 +1,31 @@
 package edu.tallerjava.repositorios;
 
 import edu.tallerjava.dto.MeliCategory;
-import edu.tallerjava.modelo.Category;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.LinkedList;
 import java.util.List;
 
 @Repository
 public class MeliApiCategoryRepositoryImpl implements MeliApiCategoryRepository{
 
-    private RestTemplate restTemplate = new RestTemplate();
+    private RestTemplate restTemplate;
+
+    public MeliApiCategoryRepositoryImpl(RestTemplateBuilder builder){
+        restTemplate = builder.rootUri("https://api.mercadolibre.com").build();
+    }
 
     public List<MeliCategory> findAll(){
-        return getForObject("https://api.mercadolibre.com/sites/MLA/categories",
+        return getForObject("/sites/MLA/categories",
                 new ParameterizedTypeReference<List<MeliCategory>>() {});
     }
 
     @Override
     public MeliCategory findByCode(String code) {
-        return restTemplate.getForObject("https://api.mercadolibre.com/categories/" + code, MeliCategory.class);
+        return restTemplate.getForObject("/categories/" + code, MeliCategory.class);
     }
 
     /**
