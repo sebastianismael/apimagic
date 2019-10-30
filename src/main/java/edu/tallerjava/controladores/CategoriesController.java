@@ -21,32 +21,32 @@ public class CategoriesController {
     @GetMapping(path = "/categoriesByCodeAndName/{code}/{name}")
     public ResponseEntity<List<Category>> findByCodeAndName(@PathVariable String code, @PathVariable String name){
         final List<Category> categories = apiService.findByCodeAndName(code, name);
-        return new ResponseEntity(categories, HttpStatus.OK);
+        return responseOk(categories);
     }
 
     @GetMapping(path = "/categoriesByName/{name}")
     public ResponseEntity<List<Category>> findByName(@PathVariable String name){
         final List<Category> categories = apiService.findByName(name);
-        return new ResponseEntity(categories, HttpStatus.OK);
+        return responseOk(categories);
     }
 
     @GetMapping(path = "/categories")
     public ResponseEntity<List<Category>> list(){
         final List<Category> categories = apiService.findAll();
-        return new ResponseEntity(categories, HttpStatus.OK);
+        return responseOk(categories);
     }
 
     @GetMapping(path = "/categoriesByCode/{code}")
     public ResponseEntity<List<Category>> findByCode(@PathVariable String code){
         final List<Category> categories = apiService.findByCode(code);
-        return new ResponseEntity(categories, HttpStatus.OK);
+        return responseOk(categories);
     }
 
     @PostMapping(path = "/categories")
     public ResponseEntity<Category> create(){
         Category category = new Category();
         category.setId(6543L);
-        return new ResponseEntity(category, HttpStatus.OK);
+        return responseOk(category);
     }
 
     @GetMapping(path = "/categories/{id}")
@@ -57,9 +57,17 @@ public class CategoriesController {
         return categoria.map(new Function<Category, ResponseEntity>() {
             @Override
             public ResponseEntity apply(Category category) {
-                return new ResponseEntity(categoria.get(), HttpStatus.OK);
+                return responseOk(category);
             }
-        }).orElse(ResponseEntity.notFound().build());
+        }).orElse(responseNotFound());
+    }
+
+    private ResponseEntity responseOk(Object body) {
+        return new ResponseEntity(body, HttpStatus.OK);
+    }
+
+    private ResponseEntity<Object> responseNotFound() {
+        return ResponseEntity.notFound().build();
     }
 
 
