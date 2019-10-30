@@ -34,16 +34,16 @@ public class CategoriesAcceptanceTest extends AcceptanceTest{
 
     @Test
     @Sql(value = "/sql/createCategories.sql")
-    public void findAll(){
-        final List results = getForObject(url + "/categories", new ParameterizedTypeReference<List<Category>>() {});
-        assertThat(results).hasSize(8);
+    public void findByName(){
+        final List results = restTemplate.getForObject(url + "/categoriesByName/Alimentos y Bebidas", List.class);
+        assertThat(results).hasSize(1);
     }
 
     @Test
     @Sql(value = "/sql/createCategories.sql")
-    public void findByName(){
-        final List results = restTemplate.getForObject(url + "/categoriesByName/Alimentos y Bebidas", List.class);
-        assertThat(results).hasSize(1);
+    public void findAll(){
+        final List results = getForObject(url + "/categories", new ParameterizedTypeReference<List<Category>>() {});
+        assertThat(results).hasSize(8);
     }
 
     @Test
@@ -72,8 +72,7 @@ public class CategoriesAcceptanceTest extends AcceptanceTest{
         newCategory.setNombre("accesorios para limpieza felina");
         newCategory.setCodigo("AFG");
         newCategory.setPermalink("www.mercadolibre.com/klhjaK098GDSHKGADNJJK");
-        final ResponseEntity<Category> responseEntity = restTemplate
-                .postForEntity(url + "/categories", newCategory, Category.class);
+        final ResponseEntity<Category> responseEntity = restTemplate.postForEntity(url + "/categories", newCategory, Category.class);
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseEntity.getBody().getId()).isNotNull();
     }
