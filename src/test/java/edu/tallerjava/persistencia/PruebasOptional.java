@@ -11,6 +11,7 @@ import static org.assertj.core.api.Assertions.*;
 
 public class PruebasOptional {
 
+    // ejemplo que hace una u otra cosa en caso que este presente o no
     @Test
     public void pruebaOptional1x(){
         List<String> lista = new LinkedList<>();
@@ -30,6 +31,7 @@ public class PruebasOptional {
 
     //=========================================================
 
+    // ejemplo que hace una cosa si esta presente o lanza una excepcion si no lo esta
     @Test(expected = Exception.class)
     public void pruebaOptional2() throws Exception {
         optional2(Optional.empty());
@@ -44,7 +46,8 @@ public class PruebasOptional {
     }
 
     //=========================================================
-
+    // ejemplo que en caso de presente invoca un metodo de la clase
+    // y en caso de no presente unvoca otro.
     @Test
     public void pruebaOptional3a(){
         optional3(Optional.empty());
@@ -77,6 +80,7 @@ public class PruebasOptional {
 
     //=========================================================
 
+    // ejemplo que en caso de presente o no presente devuelve distintos valores de un objeto de otra clase
     @Test
     public void pruebaOptional4a(){
         Integer value = optional4(Optional.empty());
@@ -102,6 +106,8 @@ public class PruebasOptional {
     }
 
     //=========================================================
+    // ejemplo que en caso de presente o no presente devuelve distintos valores de un objeto de otra clase
+    // pero delegandolo en otro metodo de la clase
 
     @Test
     public void pruebaOptional5a(){
@@ -123,5 +129,34 @@ public class PruebasOptional {
 
     private Integer cuantosHay(List<String> lista) {
         return lista.size();
+    }
+
+
+    //=========================================================
+
+    // ejemplo que en caso de presente devuelve un objeto de otra clase
+    // y si no esta presente lanza una excepcion
+    @Test(expected = Exception.class)
+    public void pruebaOptional6a() throws Exception {
+        optional6(Optional.empty());
+
+    }
+
+    @Test
+    public void pruebaOptional6b() throws Exception {
+        List<String> lista = new LinkedList<>();
+        lista.add("seba");
+        Integer value = optional6(Optional.of(lista));
+        assertThat(value).isEqualTo(1);
+    }
+
+    private Integer optional6(Optional<List<String>> lista) throws Exception {
+
+        return lista.map(new Function<List<String>, Integer>() {
+            @Override
+            public Integer apply(List<String> values) {
+                return values.size();
+            }
+        }).orElseThrow(Exception::new);
     }
 }

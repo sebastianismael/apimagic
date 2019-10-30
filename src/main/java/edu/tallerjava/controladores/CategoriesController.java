@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 
 @RestController
 public class CategoriesController {
@@ -52,11 +53,13 @@ public class CategoriesController {
     public ResponseEntity<Category> getCategory(@PathVariable String id){
 
         Optional<Category> categoria = apiService.getCategory(Long.parseLong(id));
-        if(categoria.isPresent()){
-            return new ResponseEntity(categoria.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
-        }
+
+        return categoria.map(new Function<Category, ResponseEntity>() {
+            @Override
+            public ResponseEntity apply(Category category) {
+                return new ResponseEntity(categoria.get(), HttpStatus.OK);
+            }
+        }).orElse(ResponseEntity.notFound().build());
     }
 
 
