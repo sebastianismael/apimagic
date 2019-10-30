@@ -46,7 +46,7 @@ public class CategoriesAcceptanceTest extends AcceptanceTest{
     @Sql(value = "/sql/createCategories.sql")
     public void getInvalidCategory(){
         final ResponseEntity<Category> responseEntity = restTemplate.getForEntity(url + "/categories/9891", Category.class);
-        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
     }
 
 }
