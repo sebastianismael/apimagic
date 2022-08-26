@@ -15,9 +15,11 @@ import java.util.function.Function;
 @RestController
 public class CategoriesController {
 
-    @Autowired
     private ApiService apiService;
 
+    public CategoriesController(@Autowired ApiService apiService){
+        this.apiService = apiService;
+    }
 
     @GetMapping(path = "/categoriesByCodeAndName/{code}/{name}")
     public ResponseEntity<List<Category>> findByCodeAndName(@PathVariable String code, @PathVariable String name){

@@ -1,6 +1,7 @@
 package edu.tallerjava.repositorios;
 
 import edu.tallerjava.dto.MeliCategory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;

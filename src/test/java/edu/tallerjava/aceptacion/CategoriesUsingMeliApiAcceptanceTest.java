@@ -15,7 +15,7 @@ public class CategoriesUsingMeliApiAcceptanceTest extends AcceptanceTest{
     @Test
     public void findAll(){
         final List<CategoryDto> results = getForObject(url + "/categories", new ParameterizedTypeReference<List<CategoryDto>>() {});
-        assertThat(results).hasSize(30);
+        assertThat(results).hasSize(32);
         for(CategoryDto dto : results){
             assertThat(dto.getCodigo()).isNotEmpty();
             assertThat(dto.getNombre()).isNotEmpty();
@@ -31,7 +31,7 @@ public class CategoriesUsingMeliApiAcceptanceTest extends AcceptanceTest{
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
 
         final CategoryDto category = responseEntity.getBody();
-        assertThat(category.getPermalink()).isEqualTo("http://home.mercadolibre.com.ar/vehiculos-accesorios/");
+        assertThat(category.getPermalink()).isEqualTo("https://www.mercadolibre.com.ar/c/accesorios-para-vehiculos");
     }
 
 }
