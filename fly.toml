@@ -1,4 +1,6 @@
-# fly.toml file generated for apimagic on 2022-08-26T09:58:52-03:00
+# docker build -t apimagic:1.0 .
+# docker run -p 8080:8080 -t apimagic:1.0
+# flyctl deploy --local-only --image apimagic:1.0
 
 app = "apimagic"
 kill_signal = "SIGINT"
