@@ -1,3 +1,3 @@
-package edu.tallerjava.controladores
+package edu.tallerjava.delivery
 
 data class Saludo(val nombre: String, val saludo: String)

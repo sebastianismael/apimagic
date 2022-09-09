@@ -1,6 +1,6 @@
 package edu.tallerjava.aceptacion
 
-import edu.tallerjava.controladores.UsuarioDto
+import edu.tallerjava.delivery.UsuarioDto
 import org.assertj.core.api.Assertions
 import org.junit.Before
 import org.junit.Test

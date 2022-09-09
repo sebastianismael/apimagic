@@ -1,6 +1,6 @@
-package edu.tallerjava.repositorios
+package edu.tallerjava.domain
 
-import edu.tallerjava.modelo.Usuario
+import edu.tallerjava.domain.Usuario
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface UsuarioRepository : JpaRepository<Usuario, Long>

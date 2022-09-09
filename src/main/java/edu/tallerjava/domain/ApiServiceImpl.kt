@@ -1,7 +1,5 @@
-package edu.tallerjava.servicios
+package edu.tallerjava.domain
 
-import edu.tallerjava.modelo.Usuario
-import edu.tallerjava.repositorios.UsuarioRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Propagation

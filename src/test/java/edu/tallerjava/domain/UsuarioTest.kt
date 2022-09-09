@@ -1,6 +1,5 @@
-package edu.tallerjava.persistencia
+package edu.tallerjava.domain
 
-import edu.tallerjava.modelo.Usuario
 import org.assertj.core.api.Assertions
 import org.junit.Test
 import org.junit.runner.RunWith

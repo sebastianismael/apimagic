@@ -1,6 +1,6 @@
-package edu.tallerjava.controladores
+package edu.tallerjava.delivery
 
-import edu.tallerjava.servicios.ApiService
+import edu.tallerjava.domain.ApiService
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
