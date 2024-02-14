@@ -1,6 +1,7 @@
 package edu.tallerjava.domain
 
 import org.assertj.core.api.Assertions
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -23,6 +24,6 @@ open class UsuarioTest {
         val juan = Usuario()
         juan.nombre = "juan"
         entityManager.persist(juan)
-        Assertions.assertThat(entityManager.find(Usuario::class.java, juan.id)).isNotNull
+        assertThat(entityManager.find(Usuario::class.java, juan.id)).isNotNull
     }
 }
