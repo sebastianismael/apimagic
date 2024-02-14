@@ -25,7 +25,7 @@ class QuestionServiceImpl(@Autowired private var questionRepository: QuestionRep
     private fun filterAlreadyAnsered(
         questions: MutableList<Question>,
         answeredQuestions: List<Question>
-    ) = questions.filterNot { answeredQuestions.map { it.id }.contains(it.id) }
+    ) = questions.filterNot { question -> answeredQuestions.map { it.id }.contains(question.id) }
 
     private fun findQuestionsWith(country: String, language: String, category: QuestionCategory?) =
         category?.let {
