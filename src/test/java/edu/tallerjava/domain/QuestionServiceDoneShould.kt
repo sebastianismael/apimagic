@@ -46,24 +46,20 @@ class QuestionServiceDoneShould {
         questions.shouldBeSomeOf(33L, 44L, 55L)
     }
 
-    private fun givenExistsQuestions(vararg ids: Long) {
+    private fun givenExistsQuestions(vararg ids: Long) =
         whenever(questionRepository.getQuestions(spanish, argentina)) doReturn questionsWith(ids.toList())
-    }
 
-    private fun givenUserAlreadyAnswered(vararg ids: Long) {
+    private fun givenUserAlreadyAnswered(vararg ids: Long) =
         whenever(questionRepository.getAlreadyAnsweredQuestionsOf(userId)) doReturn questionsWith(ids.toList())
-    }
 
-    private fun givenExistsQuestions(category: QuestionCategory, vararg ids: Long) {
+    private fun givenExistsQuestions(category: QuestionCategory, vararg ids: Long) =
         whenever(questionRepository.getQuestions(spanish, argentina, category)) doReturn questionsWith(ids.toList())
-    }
 
     private fun whenGetPendingQuestions(amount: Int, category: QuestionCategory? = null) =
         questionService.getQuestions(argentina, spanish, category, amount, userId)
 
-    private fun List<Question>.shouldBeSomeOf(vararg ids: Long) {
+    private fun List<Question>.shouldBeSomeOf(vararg ids: Long) =
         assertThat(this.map { it.id }).isSubsetOf(ids.asList())
-    }
 
     private fun questionsWith(ids: List<Long>) =
         ids.map {id ->
