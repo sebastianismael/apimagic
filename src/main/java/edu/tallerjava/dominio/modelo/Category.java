@@ -1,4 +1,4 @@
-package edu.tallerjava.modelo;
+package edu.tallerjava.dominio.modelo;
 
 import javax.persistence.*;
 

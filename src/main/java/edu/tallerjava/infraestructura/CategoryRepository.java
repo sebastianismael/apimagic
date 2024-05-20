@@ -1,6 +1,6 @@
-package edu.tallerjava.repositorios;
+package edu.tallerjava.infraestructura;
 
-import edu.tallerjava.modelo.Category;
+import edu.tallerjava.dominio.modelo.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

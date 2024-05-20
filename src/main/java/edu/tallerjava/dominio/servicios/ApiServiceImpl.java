@@ -1,8 +1,8 @@
-package edu.tallerjava.servicios;
+package edu.tallerjava.dominio.servicios;
 
-import edu.tallerjava.controladores.Hi;
-import edu.tallerjava.modelo.Category;
-import edu.tallerjava.repositorios.CategoryRepository;
+import edu.tallerjava.presentacion.Hi;
+import edu.tallerjava.dominio.modelo.Category;
+import edu.tallerjava.infraestructura.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

@@ -1,6 +1,6 @@
 package edu.tallerjava.aceptacion;
 
-import edu.tallerjava.modelo.Category;
+import edu.tallerjava.dominio.modelo.Category;
 import org.junit.Test;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;

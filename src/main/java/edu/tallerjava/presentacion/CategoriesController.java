@@ -1,7 +1,7 @@
-package edu.tallerjava.controladores;
+package edu.tallerjava.presentacion;
 
-import edu.tallerjava.modelo.Category;
-import edu.tallerjava.servicios.ApiService;
+import edu.tallerjava.dominio.modelo.Category;
+import edu.tallerjava.dominio.servicios.ApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

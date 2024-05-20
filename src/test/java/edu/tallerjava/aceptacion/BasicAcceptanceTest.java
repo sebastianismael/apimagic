@@ -1,6 +1,6 @@
 package edu.tallerjava.aceptacion;
 
-import edu.tallerjava.modelo.Category;
+import edu.tallerjava.dominio.modelo.Category;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

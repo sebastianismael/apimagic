@@ -1,7 +1,7 @@
-package edu.tallerjava.servicios;
+package edu.tallerjava.dominio.servicios;
 
-import edu.tallerjava.controladores.Hi;
-import edu.tallerjava.modelo.Category;
+import edu.tallerjava.presentacion.Hi;
+import edu.tallerjava.dominio.modelo.Category;
 
 import java.util.List;
 import java.util.Optional;

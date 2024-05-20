@@ -1,6 +1,6 @@
 package edu.tallerjava.persistencia;
 
-import edu.tallerjava.modelo.Category;
+import edu.tallerjava.dominio.modelo.Category;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
