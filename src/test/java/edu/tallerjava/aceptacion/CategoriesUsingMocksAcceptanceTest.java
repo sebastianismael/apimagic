@@ -1,7 +1,7 @@
 package edu.tallerjava.aceptacion;
 
+import edu.tallerjava.dominio.CategoryDao;
 import edu.tallerjava.dominio.modelo.Category;
-import edu.tallerjava.infraestructura.CategoryRepository;
 import org.junit.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
@@ -14,7 +14,7 @@ import static org.mockito.Mockito.when;
 public class CategoriesUsingMocksAcceptanceTest extends AcceptanceTest{
 
     @MockBean
-    private CategoryRepository categoryRepository;
+    private CategoryDao categoryRepository;
 
     @Test
     public void findAll() {

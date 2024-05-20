@@ -1,8 +1,8 @@
-package edu.tallerjava.services;
+package edu.tallerjava.servicios;
 
+import edu.tallerjava.dominio.CategoryDao;
 import edu.tallerjava.dominio.modelo.Category;
-import edu.tallerjava.infraestructura.CategoryRepository;
-import edu.tallerjava.dominio.servicios.ApiServiceImpl;
+import edu.tallerjava.dominio.servicios.ApiService;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
@@ -14,8 +14,8 @@ import static org.mockito.Mockito.*;
 
 public class CategoriyServiceWithOutSpringTest {
 
-    private ApiServiceImpl service = new ApiServiceImpl();
-    private CategoryRepository categoryRepository = mock(CategoryRepository.class);
+    private ApiService service = new ApiService();
+    private CategoryDao categoryRepository = mock(CategoryDao.class);
 
     @Test
     public void pruebaDelCreate(){
@@ -23,7 +23,7 @@ public class CategoriyServiceWithOutSpringTest {
         when(list.size()).thenReturn(3);
 
         when(categoryRepository.findAll()).thenReturn(list);
-        service.setCategoryRepository(categoryRepository);
+        service.setCategoryDao(categoryRepository);
 
         final List<Category> categories = service.findAll();
         Assertions.assertThat(categories).hasSize(3);
@@ -43,7 +43,7 @@ public class CategoriyServiceWithOutSpringTest {
         list.add(c2);
 
         when(categoryRepository.findAll()).thenReturn(list);
-        service.setCategoryRepository(categoryRepository);
+        service.setCategoryDao(categoryRepository);
 
 
         final List results = service.findAll();

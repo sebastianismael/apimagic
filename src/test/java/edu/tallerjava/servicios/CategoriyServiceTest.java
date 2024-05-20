@@ -1,7 +1,7 @@
-package edu.tallerjava.services;
+package edu.tallerjava.servicios;
 
+import edu.tallerjava.dominio.CategoryDao;
 import edu.tallerjava.dominio.modelo.Category;
-import edu.tallerjava.infraestructura.CategoryRepository;
 import edu.tallerjava.dominio.servicios.ApiService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
 public class CategoriyServiceTest {
 
     @MockBean
-    private CategoryRepository meliApiCategoryRepository;
+    private CategoryDao meliApiCategoryRepository;
     @Autowired
     private ApiService apiService;
 
