@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional
 open class ApiServiceImpl(@Autowired private var usuarioRepository: UsuarioRepository) : ApiService {
 
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = [Exception::class])
-    override fun crear(nombre: String) {
+    override fun create(nombre: String) {
         val user = User()
         user.name = nombre
         usuarioRepository.save(user)

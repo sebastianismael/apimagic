@@ -1,5 +1,5 @@
 package edu.tallerjava.domain
 
 interface ApiService {
-    fun crear(nombre: String)
+    fun create(nombre: String)
 }
