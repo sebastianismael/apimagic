@@ -1,5 +1,7 @@
 package edu.tallerjava.domain
 
+import edu.tallerjava.domain.model.Question
+import edu.tallerjava.domain.model.QuestionCategory
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Test

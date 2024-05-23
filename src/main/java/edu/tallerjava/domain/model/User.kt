@@ -1,4 +1,4 @@
-package edu.tallerjava.domain
+package edu.tallerjava.domain.model
 
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue

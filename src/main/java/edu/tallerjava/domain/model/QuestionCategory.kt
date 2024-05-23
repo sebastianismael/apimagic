@@ -1,4 +1,4 @@
-package edu.tallerjava.domain
+package edu.tallerjava.domain.model
 
 enum class QuestionCategory {
     HISTORY,

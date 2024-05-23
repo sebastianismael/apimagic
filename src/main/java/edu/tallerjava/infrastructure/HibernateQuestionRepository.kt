@@ -1,7 +1,7 @@
 package edu.tallerjava.infrastructure
 
-import edu.tallerjava.domain.Question
-import edu.tallerjava.domain.QuestionCategory
+import edu.tallerjava.domain.model.Question
+import edu.tallerjava.domain.model.QuestionCategory
 import edu.tallerjava.domain.QuestionRepository
 import org.springframework.stereotype.Repository
 

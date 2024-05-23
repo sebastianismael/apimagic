@@ -1,5 +1,7 @@
 package edu.tallerjava.domain
 
+import edu.tallerjava.domain.model.Question
+import edu.tallerjava.domain.model.QuestionCategory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 

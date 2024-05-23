@@ -1,6 +1,7 @@
 package edu.tallerjava.domain
 
-import edu.tallerjava.domain.QuestionCategory.*
+import edu.tallerjava.domain.model.QuestionCategory.*
+import edu.tallerjava.domain.model.Question
 import org.junit.Test
 import org.assertj.core.api.Assertions.*
 import org.junit.Before

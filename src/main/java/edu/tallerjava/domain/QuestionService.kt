@@ -1,5 +1,8 @@
 package edu.tallerjava.domain
 
+import edu.tallerjava.domain.model.Question
+import edu.tallerjava.domain.model.QuestionCategory
+
 interface QuestionService {
 
     fun getQuestions(
