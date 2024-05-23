@@ -12,7 +12,7 @@ import javax.persistence.EntityManager
 
 @RunWith(SpringRunner::class)
 @SpringBootTest
-open class UsuarioTest {
+open class UserTest {
     @Autowired
     private lateinit var entityManager: EntityManager
 
@@ -20,9 +20,9 @@ open class UsuarioTest {
     @Transactional
     @Rollback
     open fun save() {
-        val juan = Usuario()
-        juan.nombre = "juan"
+        val juan = User()
+        juan.name = "juan"
         entityManager.persist(juan)
-        Assertions.assertThat(entityManager.find(Usuario::class.java, juan.id)).isNotNull
+        Assertions.assertThat(entityManager.find(User::class.java, juan.id)).isNotNull
     }
 }

@@ -1,5 +1,5 @@
 package edu.tallerjava.delivery
 
-data class UsuarioDto(val nombre: String){
+data class UserDto(val name: String){
     constructor():this("")
 }

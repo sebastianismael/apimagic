@@ -1,7 +1,7 @@
 package edu.tallerjava.aceptacion
 
-import edu.tallerjava.delivery.UsuarioDto
-import org.assertj.core.api.Assertions
+import edu.tallerjava.delivery.UserDto
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class BasicoAceptacionTest {
+class BasicAceptanceTest {
 
     @LocalServerPort
     private val port = 0
@@ -30,21 +30,21 @@ class BasicoAceptacionTest {
     @Test
     fun smoke() {
         val json = restTemplate.getForObject("$url/isAlive", String::class.java)
-        Assertions.assertThat(json).isEqualTo("=)")
+        assertThat(json).isEqualTo("=)")
     }
 
     @Test
-    fun saludar() {
-        val nombre = "juan"
-        val json = restTemplate.getForObject("$url/saludar/$nombre", String::class.java)
-        Assertions.assertThat(json).isEqualTo("{\"nombre\":\"$nombre\",\"saludo\":\"Hola $nombre\"}")
+    fun hi() {
+        val name = "juan"
+        val json = restTemplate.getForObject("$url/saludar/$name", String::class.java)
+        assertThat(json).isEqualTo("{\"name\":\"$name\",\"hi\":\"Hola $name\"}")
     }
 
     @Test
     @Throws(Exception::class)
     fun crear() {
-        val usuario = UsuarioDto("Ana")
-        val json = restTemplate.postForObject("$url/crear", usuario, String::class.java)
-        Assertions.assertThat(json).isEqualTo("=)")
+        val user = UserDto("Ana")
+        val json = restTemplate.postForObject("$url/crear", user, String::class.java)
+        assertThat(json).isEqualTo("=)")
     }
 }

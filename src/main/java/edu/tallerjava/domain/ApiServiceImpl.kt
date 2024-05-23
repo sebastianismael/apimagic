@@ -11,8 +11,8 @@ open class ApiServiceImpl(@Autowired private var usuarioRepository: UsuarioRepos
 
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = [Exception::class])
     override fun crear(nombre: String) {
-        val usuario = Usuario()
-        usuario.nombre = nombre
-        usuarioRepository.save(usuario)
+        val user = User()
+        user.name = nombre
+        usuarioRepository.save(user)
     }
 }
