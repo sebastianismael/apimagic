@@ -7,6 +7,9 @@ import org.assertj.core.api.Assertions.*
 import org.junit.Before
 import org.mockito.kotlin.*
 
+private const val ES = "ES"
+private const val AR = "AR"
+
 class QuestionServiceShould {
 
     private lateinit var questionService: QuestionService
@@ -21,9 +24,9 @@ class QuestionServiceShould {
     @Test
     fun `get Questions`() {
         whenever(questionRepository.getAlreadyAnsweredQuestionsOf("565757")) doReturn questionsWith(11L)
-        whenever(questionRepository.getQuestions("ES", "AR")) doReturn questionsWith(11L, 33L, 44L, 55L)
+        whenever(questionRepository.getQuestions(ES, AR)) doReturn questionsWith(11L, 33L, 44L, 55L)
 
-        val result = questionService.getQuestions("AR", "ES", null, 2, "565757")
+        val result = questionService.getQuestions(AR, ES, null, 2, "565757")
 
         assertThat(result).hasSize(2)
         assertThat(result.map { it.id }).isSubsetOf(listOf(33L, 44L, 55L))
@@ -32,10 +35,10 @@ class QuestionServiceShould {
     @Test
     fun `get Questions by category`() {
         whenever(questionRepository.getAlreadyAnsweredQuestionsOf("565757")) doReturn questionsWith(11L)
-        whenever(questionRepository.getQuestions("ES", "AR", ARTS)) doReturn questionsWith(11L, 33L, 44L, 55L)
-        whenever(questionRepository.getQuestions("ES", "AR", SPORTS)) doReturn questionsWith(66L, 77L)
+        whenever(questionRepository.getQuestions(ES, AR, ARTS)) doReturn questionsWith(11L, 33L, 44L, 55L)
+        whenever(questionRepository.getQuestions(ES, AR, SPORTS)) doReturn questionsWith(66L, 77L)
 
-        val result = questionService.getQuestions("AR", "ES", ARTS, 2, "565757")
+        val result = questionService.getQuestions(AR, ES, ARTS, 2, "565757")
 
         assertThat(result).hasSize(2)
         assertThat(result.map { it.id }).isSubsetOf(listOf(33L, 44L, 55L))
