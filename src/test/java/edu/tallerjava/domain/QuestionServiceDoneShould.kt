@@ -2,6 +2,8 @@ package edu.tallerjava.domain
 
 import edu.tallerjava.domain.model.Question
 import edu.tallerjava.domain.model.QuestionCategory
+import edu.tallerjava.domain.model.QuestionCategory.ARTS
+import edu.tallerjava.domain.model.QuestionCategory.SPORTS
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Test
@@ -37,10 +39,10 @@ class QuestionServiceDoneShould {
     @Test
     fun `search by language, country and category should not return already answered and other category questions`() {
         givenUserAlreadyAnswered(11L)
-        givenExistsQuestions(QuestionCategory.ARTS, 11L, 33L, 44L, 55L)
-        givenExistsQuestions(QuestionCategory.SPORTS, 66L, 77L)
+        givenExistsQuestions(ARTS, 11L, 33L, 44L, 55L)
+        givenExistsQuestions(SPORTS, 66L, 77L)
 
-        val questions = whenGetPendingQuestions(2, QuestionCategory.ARTS)
+        val questions = whenGetPendingQuestions(2, ARTS)
 
         assertThat(questions).hasSize(2)
         questions.shouldBeSomeOf(33L, 44L, 55L)
