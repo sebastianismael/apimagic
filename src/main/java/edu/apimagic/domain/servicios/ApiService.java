@@ -24,14 +24,6 @@ public class ApiService {
         return singletonMap(name, "Hola " + name);
     }
 
-    @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
-    public void create(String name) {
-        final Category category = new Category();
-        category.setCodigo("QUERTY");
-        category.setNombre(name);
-        this.categoryGateway.save(category);
-    }
-
     public List<Category> findAll() {
         return this.categoryGateway.findAll();
     }

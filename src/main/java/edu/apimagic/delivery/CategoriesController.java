@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 
 @RestController
 public class CategoriesController {
@@ -49,8 +48,7 @@ public class CategoriesController {
 
     @PostMapping(path = "/categories", consumes = "application/json")
     public ResponseEntity create(@RequestBody Category category) {
-        this.createCategory.execute(category.getNombre());
-        return this.responseOk(1L);
+        return this.responseOk(this.createCategory.execute(category.getNombre()));
     }
 
     @GetMapping(path = "/categories/{id}")
@@ -58,12 +56,7 @@ public class CategoriesController {
 
         final Optional<Category> categoria = this.apiService.getCategory(Long.parseLong(id));
 
-        return categoria.map(new Function<Category, ResponseEntity>() {
-            @Override
-            public ResponseEntity apply(Category category) {
-                return CategoriesController.this.responseOk(category);
-            }
-        }).orElse(this.responseNotFound());
+        return categoria.map(category -> CategoriesController.this.responseOk(category)).orElse(this.responseNotFound());
     }
 
     private ResponseEntity responseOk(Object body) {

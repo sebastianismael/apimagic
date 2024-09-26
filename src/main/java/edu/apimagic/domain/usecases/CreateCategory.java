@@ -17,10 +17,11 @@ public class CreateCategory {
     private CategoryGateway categoryGateway;
 
     @Transactional(readOnly = false, propagation = REQUIRED, rollbackFor = {Exception.class})
-    public void execute(String name) {
+    public Long execute(String name) {
         final Category category = new Category();
         category.setCodigo("QUERTY");
         category.setNombre(name);
         this.categoryGateway.save(category);
+        return category.getId();
     }
 }
