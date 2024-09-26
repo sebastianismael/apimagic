@@ -6,10 +6,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 import static java.lang.Long.parseLong;
 import static org.springframework.http.HttpStatus.OK;
+import static org.springframework.http.ResponseEntity.notFound;
 
 @RestController
 public class CategoriesController {
@@ -39,26 +39,22 @@ public class CategoriesController {
 
     @GetMapping(path = "/categoriesByCodeAndName/{code}/{name}")
     public ResponseEntity<List<Category>> findByCodeAndName(@PathVariable String code, @PathVariable String name) {
-        final List<Category> categories = this.getCategoryByCodeAndName.execute(code, name);
-        return this.responseOk(categories);
+        return this.responseOk(this.getCategoryByCodeAndName.execute(code, name));
     }
 
     @GetMapping(path = "/categoriesByName/{name}")
     public ResponseEntity<List<Category>> findByName(@PathVariable String name) {
-        final List<Category> categories = this.getCategoryByName.execute(name);
-        return this.responseOk(categories);
+        return this.responseOk(this.getCategoryByName.execute(name));
     }
 
     @GetMapping(path = "/categories")
     public ResponseEntity<List<Category>> list() {
-        final List<Category> categories = this.findAllCategories.execute();
-        return this.responseOk(categories);
+        return this.responseOk(this.findAllCategories.execute());
     }
 
     @GetMapping(path = "/categoriesByCode/{code}")
     public ResponseEntity<List<Category>> findByCode(@PathVariable String code) {
-        final List<Category> categories = this.getCategoryByCode.execute(code);
-        return this.responseOk(categories);
+        return this.responseOk(this.getCategoryByCode.execute(code));
     }
 
     @PostMapping(path = "/categories", consumes = "application/json")
@@ -68,18 +64,17 @@ public class CategoriesController {
 
     @GetMapping(path = "/categories/{id}")
     public ResponseEntity<Category> getCategory(@PathVariable String id) {
-
-        final Optional<Category> categoria = this.getCategoryById.execute(parseLong(id));
-
-        return categoria.map(category -> CategoriesController.this.responseOk(category)).orElse(this.responseNotFound());
+        return this.getCategoryById.execute(parseLong(id))
+                .map(category -> this.responseOk(category))
+                .orElse(this.responseNotFound());
     }
 
     private ResponseEntity responseOk(Object body) {
         return new ResponseEntity(body, OK);
     }
 
-    private ResponseEntity<Object> responseNotFound() {
-        return ResponseEntity.notFound().build();
+    private ResponseEntity responseNotFound() {
+        return notFound().build();
     }
 
 
