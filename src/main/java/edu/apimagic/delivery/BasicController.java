@@ -1,11 +1,12 @@
 package edu.apimagic.delivery;
 
-import edu.apimagic.domain.model.Category;
 import edu.apimagic.domain.servicios.ApiService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
@@ -21,13 +22,6 @@ public class BasicController {
         logger.info("hello " + name);
         final Map<String, String> hi = this.apiService.hi(name);
         return new Hi(name, hi.get(name));
-    }
-
-    @PostMapping(path = "/create", consumes = "application/json")
-    public String create(@RequestBody Category usuario) {
-        logger.info("creating " + usuario.getNombre());
-        this.apiService.create(usuario.getNombre());
-        return "=)";
     }
 
     @GetMapping(path = "/isAlive")

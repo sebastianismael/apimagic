@@ -3,13 +3,14 @@ package edu.apimagic.aceptance;
 import edu.apimagic.domain.model.Category;
 import org.junit.Test;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
+import static org.springframework.http.HttpStatus.OK;
 
 //@Transactional
 // If your test is @Transactional, it will rollback the transaction at the end of each test method by default.
@@ -55,7 +56,7 @@ public class CategoriesAcceptanceTest extends AcceptanceTest {
         final String uri = this.url + "/categories/" + categories.get(0).getId();
 
         final ResponseEntity<Category> responseEntity = this.restTemplate.getForEntity(uri, Category.class);
-        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(responseEntity.getStatusCode()).isEqualTo(OK);
 
         final Category category = responseEntity.getBody();
         assertThat(category.getPermalink()).isEqualTo("http://home.mercadolibre.com.ar/vehiculos-accesorios/");
@@ -65,7 +66,7 @@ public class CategoriesAcceptanceTest extends AcceptanceTest {
     @Sql(value = "/sql/createCategories.sql")
     public void getInvalidCategory() {
         final ResponseEntity<Category> responseEntity = this.restTemplate.getForEntity(this.url + "/categories/9891", Category.class);
-        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+        assertThat(responseEntity.getStatusCode()).isEqualTo(NOT_FOUND);
     }
 
     @Test
@@ -74,9 +75,9 @@ public class CategoriesAcceptanceTest extends AcceptanceTest {
         newCategory.setNombre("accesorios para limpieza felina");
         newCategory.setCodigo("AFG");
         newCategory.setPermalink("www.mercadolibre.com/klhjaK098GDSHKGADNJJK");
-        final ResponseEntity<Category> responseEntity = this.restTemplate.postForEntity(this.url + "/categories", newCategory, Category.class);
-        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseEntity.getBody().getId()).isNotNull();
+        final ResponseEntity<Long> responseEntity = this.restTemplate.postForEntity(this.url + "/categories", newCategory, Long.class);
+        assertThat(responseEntity.getStatusCode()).isEqualTo(OK);
+        assertThat(responseEntity.getBody()).isNotNull();
     }
 
 

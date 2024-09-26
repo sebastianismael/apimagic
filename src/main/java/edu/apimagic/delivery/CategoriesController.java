@@ -2,13 +2,10 @@ package edu.apimagic.delivery;
 
 import edu.apimagic.domain.model.Category;
 import edu.apimagic.domain.servicios.ApiService;
-import org.springframework.beans.factory.annotation.Autowired;
+import edu.apimagic.domain.usecases.CreateCategory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,8 +14,13 @@ import java.util.function.Function;
 @RestController
 public class CategoriesController {
 
-    @Autowired
-    private ApiService apiService;
+    private final ApiService apiService;
+    private final CreateCategory createCategory;
+
+    public CategoriesController(ApiService apiService, CreateCategory createCategory) {
+        this.apiService = apiService;
+        this.createCategory = createCategory;
+    }
 
 
     @GetMapping(path = "/categoriesByCodeAndName/{code}/{name}")
@@ -45,11 +47,10 @@ public class CategoriesController {
         return this.responseOk(categories);
     }
 
-    @PostMapping(path = "/categories")
-    public ResponseEntity<Category> create() {
-        final Category category = new Category();
-        category.setId(6543L);
-        return this.responseOk(category);
+    @PostMapping(path = "/categories", consumes = "application/json")
+    public ResponseEntity create(@RequestBody Category category) {
+        this.createCategory.execute(category.getNombre());
+        return this.responseOk(1L);
     }
 
     @GetMapping(path = "/categories/{id}")

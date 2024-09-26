@@ -1,6 +1,5 @@
 package edu.apimagic.aceptance;
 
-import edu.apimagic.domain.model.Category;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,14 +17,6 @@ public class BasicAcceptanceTest extends AcceptanceTest {
         final String nombre = "juan";
         final String json = this.restTemplate.getForObject(this.url + "/hi/" + nombre, String.class);
         assertThat(json).isEqualTo("{\"name\":\"" + nombre + "\",\"hi\":\"Hola " + nombre + "\"}");
-    }
-
-    @Test
-    public void create() throws Exception {
-        final Category category = new Category();
-        category.setNombre("Ana");
-        final String json = this.restTemplate.postForObject(this.url + "/create", category, String.class);
-        assertThat(json).isEqualTo("=)");
     }
 
 }
