@@ -2,8 +2,9 @@ package edu.apimagic.servicios;
 
 import edu.apimagic.domain.CategoryGateway;
 import edu.apimagic.domain.model.Category;
-import edu.apimagic.domain.servicios.ApiService;
+import edu.apimagic.domain.usecases.FindAllCategories;
 import org.assertj.core.api.Assertions;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -13,10 +14,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class CategoriyServiceWithOutSpringTest {
+public class FindAllCategoriesWithOutSpringTest {
 
-    private final ApiService service = new ApiService();
-    private final CategoryGateway categoryRepository = mock(CategoryGateway.class);
+    private FindAllCategories findAllCategories;
+    private CategoryGateway categoryRepository;
+
+    @Before
+    public void init() {
+        this.categoryRepository = mock(CategoryGateway.class);
+        this.findAllCategories = new FindAllCategories(this.categoryRepository);
+    }
 
     @Test
     public void pruebaDelCreate() {
@@ -24,9 +31,8 @@ public class CategoriyServiceWithOutSpringTest {
         when(list.size()).thenReturn(3);
 
         when(this.categoryRepository.findAll()).thenReturn(list);
-        this.service.setCategoryDao(this.categoryRepository);
 
-        final List<Category> categories = this.service.findAll();
+        final List<Category> categories = this.findAllCategories.execute();
         Assertions.assertThat(categories).hasSize(3);
     }
 
@@ -44,10 +50,8 @@ public class CategoriyServiceWithOutSpringTest {
         list.add(c2);
 
         when(this.categoryRepository.findAll()).thenReturn(list);
-        this.service.setCategoryDao(this.categoryRepository);
 
-
-        final List results = this.service.findAll();
+        final List results = this.findAllCategories.execute();
         assertThat(results).hasSize(2);
     }
 

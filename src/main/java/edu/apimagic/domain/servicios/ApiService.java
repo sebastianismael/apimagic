@@ -8,10 +8,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-
-import static java.util.Collections.singletonMap;
 
 @Service("ApiService")
 @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
@@ -19,14 +16,6 @@ public class ApiService {
 
     @Autowired
     private CategoryGateway categoryGateway;
-
-    public Map<String, String> hi(String name) {
-        return singletonMap(name, "Hola " + name);
-    }
-
-    public List<Category> findAll() {
-        return this.categoryGateway.findAll();
-    }
 
     public List<Category> findByCode(String code) {
         return this.categoryGateway.findByCode(code);

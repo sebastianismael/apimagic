@@ -3,6 +3,7 @@ package edu.apimagic.delivery;
 import edu.apimagic.domain.model.Category;
 import edu.apimagic.domain.servicios.ApiService;
 import edu.apimagic.domain.usecases.CreateCategory;
+import edu.apimagic.domain.usecases.FindAllCategories;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,10 +17,15 @@ public class CategoriesController {
 
     private final ApiService apiService;
     private final CreateCategory createCategory;
+    private final FindAllCategories findAllCategories;
 
-    public CategoriesController(ApiService apiService, CreateCategory createCategory) {
+    public CategoriesController(ApiService apiService,
+                                CreateCategory createCategory,
+                                FindAllCategories findAllCategories
+    ) {
         this.apiService = apiService;
         this.createCategory = createCategory;
+        this.findAllCategories = findAllCategories;
     }
 
     @GetMapping(path = "/categoriesByCodeAndName/{code}/{name}")
@@ -36,7 +42,7 @@ public class CategoriesController {
 
     @GetMapping(path = "/categories")
     public ResponseEntity<List<Category>> list() {
-        final List<Category> categories = this.apiService.findAll();
+        final List<Category> categories = this.findAllCategories.execute();
         return this.responseOk(categories);
     }
 

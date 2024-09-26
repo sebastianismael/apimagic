@@ -2,7 +2,7 @@ package edu.apimagic.servicios;
 
 import edu.apimagic.domain.CategoryGateway;
 import edu.apimagic.domain.model.Category;
-import edu.apimagic.domain.servicios.ApiService;
+import edu.apimagic.domain.usecases.FindAllCategories;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +18,12 @@ import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CategoriyServiceTest {
+public class FindAllCategoriesTest {
 
     @MockBean
     private CategoryGateway meliApiCategoryRepository;
     @Autowired
-    private ApiService apiService;
+    private FindAllCategories findAllCategories;
 
     @Test
     public void findAll() {
@@ -40,7 +40,7 @@ public class CategoriyServiceTest {
 
         when(this.meliApiCategoryRepository.findAll()).thenReturn(list);
 
-        final List results = this.apiService.findAll();
+        final List results = this.findAllCategories.execute();
         assertThat(results).hasSize(2);
     }
 
