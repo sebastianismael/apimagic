@@ -62,7 +62,7 @@ public class CategoriesController {
 
     @PostMapping(path = "/categories", consumes = "application/json")
     public ResponseEntity<Long> create(@RequestBody Category category) {
-        return this.responseOk(this.createCategory.execute(category.getNombre()));
+        return this.responseOk(this.createCategory.execute(category.getName()));
     }
 
     @GetMapping(path = "/categories/{id}")

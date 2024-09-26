@@ -30,12 +30,12 @@ public class FindAllCategoriesTest {
 
         final List<Category> list = new LinkedList<>();
         final Category c1 = new Category();
-        c1.setCodigo("MLA5725");
-        c1.setNombre("Accesorios para Vehículos");
+        c1.setCode("MLA5725");
+        c1.setName("Accesorios para Vehículos");
         list.add(c1);
         final Category c2 = new Category();
-        c2.setCodigo("MLA1403");
-        c2.setNombre("Alimentos y Bebidas");
+        c2.setCode("MLA1403");
+        c2.setName("Alimentos y Bebidas");
         list.add(c2);
 
         when(this.meliApiCategoryRepository.findAll()).thenReturn(list);

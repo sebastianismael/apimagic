@@ -14,7 +14,7 @@ public class CustomizedCategoryRepositoryImpl implements CustomizedCategoryRepos
     private EntityManager entityManager;
 
     public List<Category> findByCode(String code) {
-        return this.entityManager.createQuery("from Category c where c.codigo =:code")
+        return this.entityManager.createQuery("from Category c where c.code =:code")
                 .setParameter("code", code)
                 .getResultList();
     }

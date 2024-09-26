@@ -3,8 +3,8 @@ package edu.apimagic.domain.model;
 public class Category {
 
     private Long id;
-    private String codigo;
-    private String nombre;
+    private String code;
+    private String name;
     private String permalink;
 
     public Long getId() {
@@ -23,19 +23,19 @@ public class Category {
         this.permalink = permalink;
     }
 
-    public String getCodigo() {
-        return this.codigo;
+    public String getCode() {
+        return this.code;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getNombre() {
-        return this.nombre;
+    public String getName() {
+        return this.name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 }

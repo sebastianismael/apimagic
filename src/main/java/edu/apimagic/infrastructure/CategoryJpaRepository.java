@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface CategoryJpaRepository extends JpaRepository<Category, Long>, CustomizedCategoryRepository {
 
-    @Query("from Category where nombre = ?1")
+    @Query("from Category where name = ?1")
     List<Category> findByName(String name);
 }

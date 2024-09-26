@@ -26,8 +26,8 @@ public class CategoryTest {
     @Rollback
     public void save() {
         final Category category = new Category();
-        category.setNombre("juan");
-        category.setCodigo("QUERTY");
+        category.setName("juan");
+        category.setCode("QUERTY");
         this.entityManager.persist(category);
         assertThat(this.entityManager.find(Category.class, category.getId())).isNotNull();
     }

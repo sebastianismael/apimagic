@@ -21,8 +21,8 @@ public class CreateCategory {
     @Transactional(readOnly = false, propagation = REQUIRED, rollbackFor = {Exception.class})
     public Long execute(String name) {
         final Category category = new Category();
-        category.setCodigo("QUERTY");
-        category.setNombre(name);
+        category.setCode("QUERTY");
+        category.setName(name);
         this.categoryGateway.save(category);
         return category.getId();
     }

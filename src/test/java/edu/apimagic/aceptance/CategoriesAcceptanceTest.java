@@ -72,8 +72,8 @@ public class CategoriesAcceptanceTest extends AcceptanceTest {
     @Test
     public void createCategory() {
         final Category newCategory = new Category();
-        newCategory.setNombre("accesorios para limpieza felina");
-        newCategory.setCodigo("AFG");
+        newCategory.setName("accesorios para limpieza felina");
+        newCategory.setCode("AFG");
         newCategory.setPermalink("www.mercadolibre.com/klhjaK098GDSHKGADNJJK");
         final ResponseEntity<Long> responseEntity = this.restTemplate.postForEntity(this.url + "/categories", newCategory, Long.class);
         assertThat(responseEntity.getStatusCode()).isEqualTo(OK);
