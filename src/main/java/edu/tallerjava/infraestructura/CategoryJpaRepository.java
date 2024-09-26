@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CategoryRepository extends JpaRepository<Category, Long>, CustomizedCategoryRepository {
+public interface CategoryJpaRepository extends JpaRepository<Category, Long>, CustomizedCategoryRepository {
 
     @Query("from Category where nombre = ?1")
     List<Category> findByName(String name);
