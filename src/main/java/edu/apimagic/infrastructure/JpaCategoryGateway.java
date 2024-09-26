@@ -1,7 +1,7 @@
 package edu.apimagic.infrastructure;
 
+import edu.apimagic.domain.CategoryGateway;
 import edu.apimagic.domain.model.Category;
-import edu.apimagic.domain.output_boundaries.CategoryGateway;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
