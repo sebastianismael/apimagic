@@ -5,7 +5,7 @@ import edu.tallerjava.dominio.modelo.Category;
 import java.util.List;
 import java.util.Optional;
 
-public interface CategoryDao {
+public interface CategoryGateway {
     void save(Category category);
 
     List<Category> findByCode(String code);

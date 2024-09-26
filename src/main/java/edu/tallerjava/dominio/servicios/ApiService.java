@@ -1,6 +1,6 @@
 package edu.tallerjava.dominio.servicios;
 
-import edu.tallerjava.dominio.CategoryDao;
+import edu.tallerjava.dominio.CategoryGateway;
 import edu.tallerjava.dominio.modelo.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,41 +18,41 @@ import static java.util.Collections.singletonMap;
 public class ApiService {
 
     @Autowired
-    private CategoryDao categoryDao;
+    private CategoryGateway categoryGateway;
 
     public Map<String, String> hi(String name) {
         return singletonMap(name, "Hola " + name);
     }
 
-    @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
     public void create(String name) {
-        Category category = new Category();
+        final Category category = new Category();
         category.setCodigo("QUERTY");
         category.setNombre(name);
-        categoryDao.save(category);
+        this.categoryGateway.save(category);
     }
 
     public List<Category> findAll() {
-        return categoryDao.findAll();
+        return this.categoryGateway.findAll();
     }
 
     public List<Category> findByCode(String code) {
-        return categoryDao.findByCode(code);
+        return this.categoryGateway.findByCode(code);
     }
 
     public Optional<Category> getCategory(Long id) {
-        return categoryDao.findById(id);
+        return this.categoryGateway.findById(id);
     }
 
     public List<Category> findByName(String name) {
-        return categoryDao.findByName(name);
+        return this.categoryGateway.findByName(name);
     }
 
     public List<Category> findByCodeAndName(String code, String name) {
-        return categoryDao.findByCodeAndName(code, name);
+        return this.categoryGateway.findByCodeAndName(code, name);
     }
 
-    public void setCategoryDao(CategoryDao categoryDao) {
-        this.categoryDao = categoryDao;
+    public void setCategoryDao(CategoryGateway categoryGateway) {
+        this.categoryGateway = categoryGateway;
     }
 }
