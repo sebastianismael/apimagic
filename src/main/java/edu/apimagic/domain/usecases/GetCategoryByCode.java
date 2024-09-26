@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class GetCategory {
+public class GetCategoryByCode {
 
     private final CategoryGateway categoryGateway;
 
-    public GetCategory(CategoryGateway categoryGateway) {
+    public GetCategoryByCode(CategoryGateway categoryGateway) {
         this.categoryGateway = categoryGateway;
     }
 

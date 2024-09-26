@@ -29,7 +29,4 @@ public class ApiService {
         return this.categoryGateway.findByCodeAndName(code, name);
     }
 
-    public void setCategoryDao(CategoryGateway categoryGateway) {
-        this.categoryGateway = categoryGateway;
-    }
 }
