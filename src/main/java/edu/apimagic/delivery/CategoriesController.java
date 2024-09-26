@@ -1,7 +1,7 @@
 package edu.apimagic.delivery;
 
 import edu.apimagic.domain.model.Category;
-import edu.apimagic.domain.usecases.*;
+import edu.apimagic.domain.use_cases.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

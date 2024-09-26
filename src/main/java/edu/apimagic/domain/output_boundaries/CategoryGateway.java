@@ -1,4 +1,4 @@
-package edu.apimagic.domain;
+package edu.apimagic.domain.output_boundaries;
 
 import edu.apimagic.domain.model.Category;
 

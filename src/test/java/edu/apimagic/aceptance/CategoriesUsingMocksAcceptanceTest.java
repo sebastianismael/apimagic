@@ -1,7 +1,7 @@
 package edu.apimagic.aceptance;
 
-import edu.apimagic.domain.CategoryGateway;
 import edu.apimagic.domain.model.Category;
+import edu.apimagic.domain.output_boundaries.CategoryGateway;
 import org.junit.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 

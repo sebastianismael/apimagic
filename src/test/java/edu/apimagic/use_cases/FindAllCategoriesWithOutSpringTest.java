@@ -1,8 +1,8 @@
-package edu.apimagic.servicios;
+package edu.apimagic.use_cases;
 
-import edu.apimagic.domain.CategoryGateway;
 import edu.apimagic.domain.model.Category;
-import edu.apimagic.domain.usecases.FindAllCategories;
+import edu.apimagic.domain.output_boundaries.CategoryGateway;
+import edu.apimagic.domain.use_cases.FindAllCategories;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
