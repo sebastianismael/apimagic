@@ -4,6 +4,7 @@ import edu.apimagic.domain.model.Category;
 import edu.apimagic.domain.servicios.ApiService;
 import edu.apimagic.domain.usecases.CreateCategory;
 import edu.apimagic.domain.usecases.FindAllCategories;
+import edu.apimagic.domain.usecases.GetCategory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,14 +19,16 @@ public class CategoriesController {
     private final ApiService apiService;
     private final CreateCategory createCategory;
     private final FindAllCategories findAllCategories;
+    private final GetCategory getCategory;
 
     public CategoriesController(ApiService apiService,
                                 CreateCategory createCategory,
-                                FindAllCategories findAllCategories
+                                FindAllCategories findAllCategories, GetCategory getCategory
     ) {
         this.apiService = apiService;
         this.createCategory = createCategory;
         this.findAllCategories = findAllCategories;
+        this.getCategory = getCategory;
     }
 
     @GetMapping(path = "/categoriesByCodeAndName/{code}/{name}")
@@ -48,7 +51,7 @@ public class CategoriesController {
 
     @GetMapping(path = "/categoriesByCode/{code}")
     public ResponseEntity<List<Category>> findByCode(@PathVariable String code) {
-        final List<Category> categories = this.apiService.findByCode(code);
+        final List<Category> categories = this.getCategory.execute(code);
         return this.responseOk(categories);
     }
 
