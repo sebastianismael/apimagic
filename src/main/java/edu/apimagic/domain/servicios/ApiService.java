@@ -16,10 +16,6 @@ public class ApiService {
     @Autowired
     private CategoryGateway categoryGateway;
 
-    public List<Category> findByName(String name) {
-        return this.categoryGateway.findByName(name);
-    }
-
     public List<Category> findByCodeAndName(String code, String name) {
         return this.categoryGateway.findByCodeAndName(code, name);
     }

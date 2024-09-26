@@ -2,10 +2,7 @@ package edu.apimagic.delivery;
 
 import edu.apimagic.domain.model.Category;
 import edu.apimagic.domain.servicios.ApiService;
-import edu.apimagic.domain.usecases.CreateCategory;
-import edu.apimagic.domain.usecases.FindAllCategories;
-import edu.apimagic.domain.usecases.GetCategoryByCode;
-import edu.apimagic.domain.usecases.GetCategoryById;
+import edu.apimagic.domain.usecases.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,16 +20,18 @@ public class CategoriesController {
     private final FindAllCategories findAllCategories;
     private final GetCategoryByCode getCategoryByCode;
     private final GetCategoryById getCategoryById;
+    private final GetCategoryByName getCategoryByName;
 
     public CategoriesController(ApiService apiService,
                                 CreateCategory createCategory,
-                                FindAllCategories findAllCategories, GetCategoryByCode getCategoryByCode, GetCategoryById getCategoryById
+                                FindAllCategories findAllCategories, GetCategoryByCode getCategoryByCode, GetCategoryById getCategoryById, GetCategoryByName getCategoryByName
     ) {
         this.apiService = apiService;
         this.createCategory = createCategory;
         this.findAllCategories = findAllCategories;
         this.getCategoryByCode = getCategoryByCode;
         this.getCategoryById = getCategoryById;
+        this.getCategoryByName = getCategoryByName;
     }
 
     @GetMapping(path = "/categoriesByCodeAndName/{code}/{name}")
@@ -43,7 +42,7 @@ public class CategoriesController {
 
     @GetMapping(path = "/categoriesByName/{name}")
     public ResponseEntity<List<Category>> findByName(@PathVariable String name) {
-        final List<Category> categories = this.apiService.findByName(name);
+        final List<Category> categories = this.getCategoryByName.execute(name);
         return this.responseOk(categories);
     }
 
