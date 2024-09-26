@@ -1,18 +1,7 @@
 package edu.apimagic.domain.model;
 
-import javax.persistence.*;
-
-@NamedQueries({
-        @NamedQuery(
-                name = "findCategoryByCodeAndName",
-                query = "from Category c where c.codigo=:code and c.nombre=:name"
-        )
-})
-@Entity
 public class Category {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String codigo;
     private String nombre;

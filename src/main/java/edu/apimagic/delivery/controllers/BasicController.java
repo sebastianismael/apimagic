@@ -1,4 +1,4 @@
-package edu.apimagic.delivery;
+package edu.apimagic.delivery.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

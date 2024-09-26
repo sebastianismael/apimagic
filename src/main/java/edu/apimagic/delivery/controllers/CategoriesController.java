@@ -1,4 +1,4 @@
-package edu.apimagic.delivery;
+package edu.apimagic.delivery.controllers;
 
 import edu.apimagic.domain.model.Category;
 import edu.apimagic.domain.use_cases.*;
@@ -61,7 +61,7 @@ public class CategoriesController {
     }
 
     @PostMapping(path = "/categories", consumes = "application/json")
-    public ResponseEntity create(@RequestBody Category category) {
+    public ResponseEntity<Long> create(@RequestBody Category category) {
         return this.responseOk(this.createCategory.execute(category.getNombre()));
     }
 
