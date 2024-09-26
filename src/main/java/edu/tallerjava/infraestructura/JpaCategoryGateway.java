@@ -1,7 +1,7 @@
 package edu.tallerjava.infraestructura;
 
-import edu.tallerjava.dominio.CategoryGateway;
-import edu.tallerjava.dominio.modelo.Category;
+import edu.tallerjava.domain.CategoryGateway;
+import edu.tallerjava.domain.modelo.Category;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

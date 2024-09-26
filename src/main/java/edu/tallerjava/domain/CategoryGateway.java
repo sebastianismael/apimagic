@@ -1,6 +1,6 @@
-package edu.tallerjava.dominio;
+package edu.tallerjava.domain;
 
-import edu.tallerjava.dominio.modelo.Category;
+import edu.tallerjava.domain.modelo.Category;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,8 +1,8 @@
 package edu.tallerjava.servicios;
 
-import edu.tallerjava.dominio.CategoryGateway;
-import edu.tallerjava.dominio.modelo.Category;
-import edu.tallerjava.dominio.servicios.ApiService;
+import edu.tallerjava.domain.CategoryGateway;
+import edu.tallerjava.domain.modelo.Category;
+import edu.tallerjava.domain.servicios.ApiService;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 

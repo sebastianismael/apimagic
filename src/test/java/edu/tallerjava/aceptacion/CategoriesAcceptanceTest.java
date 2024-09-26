@@ -1,6 +1,6 @@
 package edu.tallerjava.aceptacion;
 
-import edu.tallerjava.dominio.modelo.Category;
+import edu.tallerjava.domain.modelo.Category;
 import org.junit.Test;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;
@@ -16,43 +16,45 @@ import static org.assertj.core.api.Assertions.assertThat;
 // However, as using this arrangement with either RANDOM_PORT or DEFINED_PORT implicitly provides a real servlet environment,
 // HTTP client and server will run in separate threads, thus separate transactions.
 // Any transaction initiated on the server won’t rollback in this case.
-public class CategoriesAcceptanceTest extends AcceptanceTest{
+public class CategoriesAcceptanceTest extends AcceptanceTest {
 
     @Test
     @Sql(value = "/sql/createCategories.sql")
-    public void findByCodeAndName(){
-        final List results = restTemplate.getForObject(url + "/categoriesByCodeAndName/MLA1071/Animales y Mascotas", List.class);
+    public void findByCodeAndName() {
+        final List results = this.restTemplate.getForObject(this.url + "/categoriesByCodeAndName/MLA1071/Animales y Mascotas", List.class);
         assertThat(results).hasSize(1);
     }
 
     @Test
     @Sql(value = "/sql/createCategories.sql")
-    public void findByCode(){
-        final List results = restTemplate.getForObject(url + "/categoriesByCode/MLA1071", List.class);
+    public void findByCode() {
+        final List results = this.restTemplate.getForObject(this.url + "/categoriesByCode/MLA1071", List.class);
         assertThat(results).hasSize(1);
     }
 
     @Test
     @Sql(value = "/sql/createCategories.sql")
-    public void findByName(){
-        final List results = restTemplate.getForObject(url + "/categoriesByName/Alimentos y Bebidas", List.class);
+    public void findByName() {
+        final List results = this.restTemplate.getForObject(this.url + "/categoriesByName/Alimentos y Bebidas", List.class);
         assertThat(results).hasSize(1);
     }
 
     @Test
     @Sql(value = "/sql/createCategories.sql")
-    public void findAll(){
-        final List results = getForObject(url + "/categories", new ParameterizedTypeReference<List<Category>>() {});
+    public void findAll() {
+        final List results = this.getForObject(this.url + "/categories", new ParameterizedTypeReference<List<Category>>() {
+        });
         assertThat(results).hasSize(8);
     }
 
     @Test
     @Sql(value = "/sql/createCategories.sql")
-    public void getSingleCategory(){
-        final List<Category> categories = getForObject(url + "/categories", new ParameterizedTypeReference<List<Category>>() {});
-        String uri = url + "/categories/" + categories.get(0).getId();
+    public void getSingleCategory() {
+        final List<Category> categories = this.getForObject(this.url + "/categories", new ParameterizedTypeReference<List<Category>>() {
+        });
+        final String uri = this.url + "/categories/" + categories.get(0).getId();
 
-        final ResponseEntity<Category> responseEntity = restTemplate.getForEntity(uri, Category.class);
+        final ResponseEntity<Category> responseEntity = this.restTemplate.getForEntity(uri, Category.class);
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
 
         final Category category = responseEntity.getBody();
@@ -61,25 +63,21 @@ public class CategoriesAcceptanceTest extends AcceptanceTest{
 
     @Test
     @Sql(value = "/sql/createCategories.sql")
-    public void getInvalidCategory(){
-        final ResponseEntity<Category> responseEntity = restTemplate.getForEntity(url + "/categories/9891", Category.class);
+    public void getInvalidCategory() {
+        final ResponseEntity<Category> responseEntity = this.restTemplate.getForEntity(this.url + "/categories/9891", Category.class);
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
     }
 
     @Test
-    public void createCategory(){
-        Category newCategory = new Category();
+    public void createCategory() {
+        final Category newCategory = new Category();
         newCategory.setNombre("accesorios para limpieza felina");
         newCategory.setCodigo("AFG");
         newCategory.setPermalink("www.mercadolibre.com/klhjaK098GDSHKGADNJJK");
-        final ResponseEntity<Category> responseEntity = restTemplate.postForEntity(url + "/categories", newCategory, Category.class);
+        final ResponseEntity<Category> responseEntity = this.restTemplate.postForEntity(this.url + "/categories", newCategory, Category.class);
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseEntity.getBody().getId()).isNotNull();
     }
-
-
-
-
 
 
 }
