@@ -3,12 +3,13 @@ package edu.apimagic.delivery;
 import edu.apimagic.domain.model.Category;
 import edu.apimagic.domain.servicios.ApiService;
 import edu.apimagic.domain.usecases.CreateCategory;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+
+import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 public class CategoriesController {
@@ -20,7 +21,6 @@ public class CategoriesController {
         this.apiService = apiService;
         this.createCategory = createCategory;
     }
-
 
     @GetMapping(path = "/categoriesByCodeAndName/{code}/{name}")
     public ResponseEntity<List<Category>> findByCodeAndName(@PathVariable String code, @PathVariable String name) {
@@ -60,7 +60,7 @@ public class CategoriesController {
     }
 
     private ResponseEntity responseOk(Object body) {
-        return new ResponseEntity(body, HttpStatus.OK);
+        return new ResponseEntity(body, OK);
     }
 
     private ResponseEntity<Object> responseNotFound() {

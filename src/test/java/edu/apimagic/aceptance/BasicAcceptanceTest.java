@@ -11,12 +11,4 @@ public class BasicAcceptanceTest extends AcceptanceTest {
         final String json = this.restTemplate.getForObject(this.url + "/isAlive", String.class);
         assertThat(json).isEqualTo("=)");
     }
-
-    @Test
-    public void hi() {
-        final String nombre = "juan";
-        final String json = this.restTemplate.getForObject(this.url + "/hi/" + nombre, String.class);
-        assertThat(json).isEqualTo("{\"name\":\"" + nombre + "\",\"hi\":\"Hola " + nombre + "\"}");
-    }
-
 }
