@@ -7,15 +7,14 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class GetCategoryByName {
-
+public class GetCategoryByCodeAndName {
     private final CategoryGateway categoryGateway;
 
-    public GetCategoryByName(CategoryGateway categoryGateway) {
+    public GetCategoryByCodeAndName(CategoryGateway categoryGateway) {
         this.categoryGateway = categoryGateway;
     }
 
-    public List<Category> execute(String name) {
-        return this.categoryGateway.findByName(name);
+    public List<Category> execute(String code, String name) {
+        return this.categoryGateway.findByCodeAndName(code, name);
     }
 }

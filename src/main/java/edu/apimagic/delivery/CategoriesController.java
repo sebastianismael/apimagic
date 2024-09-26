@@ -1,7 +1,6 @@
 package edu.apimagic.delivery;
 
 import edu.apimagic.domain.model.Category;
-import edu.apimagic.domain.servicios.ApiService;
 import edu.apimagic.domain.usecases.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,28 +14,31 @@ import static org.springframework.http.HttpStatus.OK;
 @RestController
 public class CategoriesController {
 
-    private final ApiService apiService;
     private final CreateCategory createCategory;
     private final FindAllCategories findAllCategories;
     private final GetCategoryByCode getCategoryByCode;
     private final GetCategoryById getCategoryById;
     private final GetCategoryByName getCategoryByName;
+    private final GetCategoryByCodeAndName getCategoryByCodeAndName;
 
-    public CategoriesController(ApiService apiService,
-                                CreateCategory createCategory,
-                                FindAllCategories findAllCategories, GetCategoryByCode getCategoryByCode, GetCategoryById getCategoryById, GetCategoryByName getCategoryByName
+    public CategoriesController(
+            CreateCategory createCategory,
+            FindAllCategories findAllCategories,
+            GetCategoryByCode getCategoryByCode,
+            GetCategoryById getCategoryById,
+            GetCategoryByName getCategoryByName, GetCategoryByCodeAndName getCategoryByCodeAndName
     ) {
-        this.apiService = apiService;
         this.createCategory = createCategory;
         this.findAllCategories = findAllCategories;
         this.getCategoryByCode = getCategoryByCode;
         this.getCategoryById = getCategoryById;
         this.getCategoryByName = getCategoryByName;
+        this.getCategoryByCodeAndName = getCategoryByCodeAndName;
     }
 
     @GetMapping(path = "/categoriesByCodeAndName/{code}/{name}")
     public ResponseEntity<List<Category>> findByCodeAndName(@PathVariable String code, @PathVariable String name) {
-        final List<Category> categories = this.apiService.findByCodeAndName(code, name);
+        final List<Category> categories = this.getCategoryByCodeAndName.execute(code, name);
         return this.responseOk(categories);
     }
 
