@@ -1,4 +1,4 @@
-package edu.tallerjava.persistencia;
+package edu.apimagic.persistence;
 
 import org.junit.Test;
 
@@ -7,21 +7,21 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class PruebasOptional {
 
     // ejemplo que hace una u otra cosa en caso que este presente o no
     @Test
-    public void pruebaOptional1x(){
-        List<String> lista = new LinkedList<>();
+    public void pruebaOptional1x() {
+        final List<String> lista = new LinkedList<>();
         lista.add("seba");
 
-        optional1(Optional.empty());
-        optional1(Optional.of(lista));
+        this.optional1(Optional.empty());
+        this.optional1(Optional.of(lista));
     }
 
-    private void optional1(Optional<List<String>> lista){
+    private void optional1(Optional<List<String>> lista) {
 
         lista.ifPresentOrElse(
                 value -> System.out.println("Found: " + value),
@@ -34,7 +34,7 @@ public class PruebasOptional {
     // ejemplo que hace una cosa si esta presente o lanza una excepcion si no lo esta
     @Test(expected = Exception.class)
     public void pruebaOptional2() throws Exception {
-        optional2(Optional.empty());
+        this.optional2(Optional.empty());
     }
 
     private void optional2(Optional<List<String>> lista) throws Exception {
@@ -49,26 +49,26 @@ public class PruebasOptional {
     // ejemplo que en caso de presente invoca un metodo de la clase
     // y en caso de no presente unvoca otro.
     @Test
-    public void pruebaOptional3a(){
-        optional3(Optional.empty());
-        assertThat(value).isEqualTo(0);
+    public void pruebaOptional3a() {
+        this.optional3(Optional.empty());
+        assertThat(this.value).isEqualTo(0);
     }
 
     @Test
-    public void pruebaOptional3b(){
-        List<String> lista = new LinkedList<>();
+    public void pruebaOptional3b() {
+        final List<String> lista = new LinkedList<>();
         lista.add("seba");
-        optional3(Optional.of(lista));
-        assertThat(value).isEqualTo(1);
+        this.optional3(Optional.of(lista));
+        assertThat(this.value).isEqualTo(1);
     }
 
     private Integer optional3(Optional<List<String>> lista) {
 
         lista.ifPresentOrElse(this::existe, this::noExiste);
-        return value;
+        return this.value;
     }
 
-    private void existe(List<String> f){
+    private void existe(List<String> f) {
         this.value = f.size();
     }
 
@@ -82,16 +82,16 @@ public class PruebasOptional {
 
     // ejemplo que en caso de presente o no presente devuelve distintos valores de un objeto de otra clase
     @Test
-    public void pruebaOptional4a(){
-        Integer value = optional4(Optional.empty());
+    public void pruebaOptional4a() {
+        final Integer value = this.optional4(Optional.empty());
         assertThat(value).isEqualTo(0);
     }
 
     @Test
-    public void pruebaOptional4b(){
-        List<String> lista = new LinkedList<>();
+    public void pruebaOptional4b() {
+        final List<String> lista = new LinkedList<>();
         lista.add("seba");
-        Integer value = optional4(Optional.of(lista));
+        final Integer value = this.optional4(Optional.of(lista));
         assertThat(value).isEqualTo(1);
     }
 
@@ -110,16 +110,16 @@ public class PruebasOptional {
     // pero delegandolo en otro metodo de la clase
 
     @Test
-    public void pruebaOptional5a(){
-        Integer value = optional5(Optional.empty());
+    public void pruebaOptional5a() {
+        final Integer value = this.optional5(Optional.empty());
         assertThat(value).isEqualTo(0);
     }
 
     @Test
-    public void pruebaOptional5b(){
-        List<String> lista = new LinkedList<>();
+    public void pruebaOptional5b() {
+        final List<String> lista = new LinkedList<>();
         lista.add("seba");
-        Integer value = optional5(Optional.of(lista));
+        final Integer value = this.optional5(Optional.of(lista));
         assertThat(value).isEqualTo(1);
     }
 
@@ -138,15 +138,15 @@ public class PruebasOptional {
     // y si no esta presente lanza una excepcion
     @Test(expected = Exception.class)
     public void pruebaOptional6a() throws Exception {
-        optional6(Optional.empty());
+        this.optional6(Optional.empty());
 
     }
 
     @Test
     public void pruebaOptional6b() throws Exception {
-        List<String> lista = new LinkedList<>();
+        final List<String> lista = new LinkedList<>();
         lista.add("seba");
-        Integer value = optional6(Optional.of(lista));
+        final Integer value = this.optional6(Optional.of(lista));
         assertThat(value).isEqualTo(1);
     }
 

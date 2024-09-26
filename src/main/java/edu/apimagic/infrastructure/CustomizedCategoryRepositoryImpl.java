@@ -1,6 +1,6 @@
-package edu.tallerjava.infraestructura;
+package edu.apimagic.infrastructure;
 
-import edu.tallerjava.domain.modelo.Category;
+import edu.apimagic.domain.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

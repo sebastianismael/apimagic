@@ -1,7 +1,7 @@
-package edu.tallerjava.domain.servicios;
+package edu.apimagic.domain.servicios;
 
-import edu.tallerjava.domain.CategoryGateway;
-import edu.tallerjava.domain.modelo.Category;
+import edu.apimagic.domain.CategoryGateway;
+import edu.apimagic.domain.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

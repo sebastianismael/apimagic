@@ -1,7 +1,7 @@
-package edu.tallerjava.presentacion;
+package edu.apimagic.delivery;
 
-import edu.tallerjava.domain.modelo.Category;
-import edu.tallerjava.domain.servicios.ApiService;
+import edu.apimagic.domain.model.Category;
+import edu.apimagic.domain.servicios.ApiService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

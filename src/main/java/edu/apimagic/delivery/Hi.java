@@ -1,16 +1,16 @@
-package edu.tallerjava.presentacion;
+package edu.apimagic.delivery;
 
 public class Hi {
     private String name;
     private String hi;
 
-    public Hi(String name, String hi){
+    public Hi(String name, String hi) {
         this.name = name;
         this.hi = hi;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -18,7 +18,7 @@ public class Hi {
     }
 
     public String getHi() {
-        return hi;
+        return this.hi;
     }
 
     public void setHi(String hi) {

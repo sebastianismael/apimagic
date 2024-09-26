@@ -1,7 +1,7 @@
-package edu.tallerjava.aceptacion;
+package edu.apimagic.aceptance;
 
-import edu.tallerjava.domain.CategoryGateway;
-import edu.tallerjava.domain.modelo.Category;
+import edu.apimagic.domain.CategoryGateway;
+import edu.apimagic.domain.model.Category;
 import org.junit.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 

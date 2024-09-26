@@ -1,4 +1,4 @@
-package edu.tallerjava.aceptacion;
+package edu.apimagic.aceptance;
 
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -24,18 +24,19 @@ public abstract class AcceptanceTest {
     protected TestRestTemplate restTemplate;
 
     @Before
-    public void init(){
-        url = "http://localhost:" + port;
+    public void init() {
+        this.url = "http://localhost:" + this.port;
     }
 
     /**
      * Permite obtener como respuesta de un get un List tipado
-     * @param uri path del servicio
+     *
+     * @param uri          path del servicio
      * @param responseType un wrapper de una lista parametrizada
-     * @param <T> el tipo de datos de los objetos de la lista resultado
+     * @param <T>          el tipo de datos de los objetos de la lista resultado
      * @return Una lista de objetos del tipo T
      */
     protected <T> List<T> getForObject(String uri, ParameterizedTypeReference<List<T>> responseType) {
-        return restTemplate.exchange(uri, HttpMethod.GET, null, responseType).getBody();
+        return this.restTemplate.exchange(uri, HttpMethod.GET, null, responseType).getBody();
     }
 }

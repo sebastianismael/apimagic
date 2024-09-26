@@ -1,7 +1,7 @@
-package edu.tallerjava.infraestructura;
+package edu.apimagic.infrastructure;
 
-import edu.tallerjava.domain.CategoryGateway;
-import edu.tallerjava.domain.modelo.Category;
+import edu.apimagic.domain.CategoryGateway;
+import edu.apimagic.domain.model.Category;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

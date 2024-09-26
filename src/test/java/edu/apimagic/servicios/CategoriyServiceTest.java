@@ -1,8 +1,8 @@
-package edu.tallerjava.servicios;
+package edu.apimagic.servicios;
 
-import edu.tallerjava.domain.CategoryGateway;
-import edu.tallerjava.domain.modelo.Category;
-import edu.tallerjava.domain.servicios.ApiService;
+import edu.apimagic.domain.CategoryGateway;
+import edu.apimagic.domain.model.Category;
+import edu.apimagic.domain.servicios.ApiService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

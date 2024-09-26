@@ -1,6 +1,6 @@
-package edu.tallerjava.aceptacion;
+package edu.apimagic.aceptance;
 
-import edu.tallerjava.domain.modelo.Category;
+import edu.apimagic.domain.model.Category;
 import org.junit.Test;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;

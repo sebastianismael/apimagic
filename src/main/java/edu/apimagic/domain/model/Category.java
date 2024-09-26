@@ -1,4 +1,4 @@
-package edu.tallerjava.domain.modelo;
+package edu.apimagic.domain.model;
 
 import javax.persistence.*;
 
