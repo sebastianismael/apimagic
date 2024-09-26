@@ -26,7 +26,8 @@ public class CategoriesController {
             FindAllCategories findAllCategories,
             GetCategoryByCode getCategoryByCode,
             GetCategoryById getCategoryById,
-            GetCategoryByName getCategoryByName, GetCategoryByCodeAndName getCategoryByCodeAndName
+            GetCategoryByName getCategoryByName,
+            GetCategoryByCodeAndName getCategoryByCodeAndName
     ) {
         this.createCategory = createCategory;
         this.findAllCategories = findAllCategories;
