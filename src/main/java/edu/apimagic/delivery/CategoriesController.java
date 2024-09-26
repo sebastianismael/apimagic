@@ -5,12 +5,14 @@ import edu.apimagic.domain.servicios.ApiService;
 import edu.apimagic.domain.usecases.CreateCategory;
 import edu.apimagic.domain.usecases.FindAllCategories;
 import edu.apimagic.domain.usecases.GetCategoryByCode;
+import edu.apimagic.domain.usecases.GetCategoryById;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
+import static java.lang.Long.parseLong;
 import static org.springframework.http.HttpStatus.OK;
 
 @RestController
@@ -20,15 +22,17 @@ public class CategoriesController {
     private final CreateCategory createCategory;
     private final FindAllCategories findAllCategories;
     private final GetCategoryByCode getCategoryByCode;
+    private final GetCategoryById getCategoryById;
 
     public CategoriesController(ApiService apiService,
                                 CreateCategory createCategory,
-                                FindAllCategories findAllCategories, GetCategoryByCode getCategoryByCode
+                                FindAllCategories findAllCategories, GetCategoryByCode getCategoryByCode, GetCategoryById getCategoryById
     ) {
         this.apiService = apiService;
         this.createCategory = createCategory;
         this.findAllCategories = findAllCategories;
         this.getCategoryByCode = getCategoryByCode;
+        this.getCategoryById = getCategoryById;
     }
 
     @GetMapping(path = "/categoriesByCodeAndName/{code}/{name}")
@@ -63,7 +67,7 @@ public class CategoriesController {
     @GetMapping(path = "/categories/{id}")
     public ResponseEntity<Category> getCategory(@PathVariable String id) {
 
-        final Optional<Category> categoria = this.apiService.getCategory(Long.parseLong(id));
+        final Optional<Category> categoria = this.getCategoryById.execute(parseLong(id));
 
         return categoria.map(category -> CategoriesController.this.responseOk(category)).orElse(this.responseNotFound());
     }

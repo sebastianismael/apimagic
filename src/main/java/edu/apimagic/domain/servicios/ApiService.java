@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service("ApiService")
 @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
@@ -16,10 +15,6 @@ public class ApiService {
 
     @Autowired
     private CategoryGateway categoryGateway;
-
-    public Optional<Category> getCategory(Long id) {
-        return this.categoryGateway.findById(id);
-    }
 
     public List<Category> findByName(String name) {
         return this.categoryGateway.findByName(name);
