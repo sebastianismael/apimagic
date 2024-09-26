@@ -7,12 +7,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
+import static org.springframework.http.HttpMethod.GET;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT)
@@ -39,6 +39,6 @@ public abstract class AcceptanceTest {
      * @return Una lista de objetos del tipo T
      */
     protected <T> List<T> getForObject(String uri, ParameterizedTypeReference<List<T>> responseType) {
-        return this.restTemplate.exchange(uri, HttpMethod.GET, null, responseType).getBody();
+        return this.restTemplate.exchange(uri, GET, null, responseType).getBody();
     }
 }
