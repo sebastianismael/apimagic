@@ -2,8 +2,9 @@ package edu.tallerjava.domain
 
 import edu.tallerjava.domain.model.QuestionCategory.*
 import edu.tallerjava.domain.model.Question
+import org.amshove.kluent.shouldContainAll
+import org.amshove.kluent.shouldHaveSize
 import org.junit.Test
-import org.assertj.core.api.Assertions.*
 import org.junit.Before
 import org.mockito.kotlin.*
 
@@ -28,8 +29,8 @@ class QuestionServiceShould {
 
         val result = questionService.getQuestions(AR, ES, null, 2, "565757")
 
-        assertThat(result).hasSize(2)
-        assertThat(result.map { it.id }).isSubsetOf(listOf(33L, 44L, 55L))
+        result shouldHaveSize 2
+        result.shouldBeSomeOf(33L, 44L, 55L)
     }
 
     @Test
@@ -40,10 +41,13 @@ class QuestionServiceShould {
 
         val result = questionService.getQuestions(AR, ES, ARTS, 2, "565757")
 
-        assertThat(result).hasSize(2)
-        assertThat(result.map { it.id }).isSubsetOf(listOf(33L, 44L, 55L))
+        result shouldHaveSize 2
+        result.shouldBeSomeOf(33L, 44L, 55L)
     }
 
+    private fun List<Question>.shouldBeSomeOf(vararg ids: Long) {
+        ids.asList().shouldContainAll(this.map { it.id })
+    }
 
     private fun questionsWith(vararg ids: Long) =
         ids.map {id ->

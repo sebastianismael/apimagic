@@ -4,7 +4,7 @@ import edu.tallerjava.domain.model.Question
 import edu.tallerjava.domain.model.QuestionCategory
 import edu.tallerjava.domain.model.QuestionCategory.ARTS
 import edu.tallerjava.domain.model.QuestionCategory.SPORTS
-import org.assertj.core.api.Assertions.assertThat
+import org.amshove.kluent.*
 import org.junit.Before
 import org.junit.Test
 import org.mockito.kotlin.doReturn
@@ -32,7 +32,7 @@ class QuestionServiceDoneShould {
 
         val questions = whenGetPendingQuestions(2)
 
-        assertThat(questions).hasSize(2)
+        questions shouldHaveSize 2
         questions.shouldBeSomeOf(33L, 44L, 55L)
     }
 
@@ -44,7 +44,7 @@ class QuestionServiceDoneShould {
 
         val questions = whenGetPendingQuestions(2, ARTS)
 
-        assertThat(questions).hasSize(2)
+        questions shouldHaveSize 2
         questions.shouldBeSomeOf(33L, 44L, 55L)
     }
 
@@ -64,7 +64,7 @@ class QuestionServiceDoneShould {
         questionService.getQuestions(argentina, spanish, category, amount, userId)
 
     private fun List<Question>.shouldBeSomeOf(vararg ids: Long) {
-        assertThat(this.map { it.id }).isSubsetOf(ids.asList())
+        ids.asList().shouldContainAll(this.map { it.id })
     }
 
     private fun questionsWith(ids: List<Long>) =

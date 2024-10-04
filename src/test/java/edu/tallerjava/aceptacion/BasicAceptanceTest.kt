@@ -1,7 +1,7 @@
 package edu.tallerjava.aceptacion
 
 import edu.tallerjava.delivery.UserDto
-import org.assertj.core.api.Assertions.assertThat
+import org.amshove.kluent.`should be equal to`
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -31,21 +31,21 @@ class BasicAceptanceTest {
     @Test
     fun smoke() {
         val json = restTemplate.getForObject("$url/isAlive", String::class.java)
-        assertThat(json).isEqualTo("=)")
+        json `should be equal to` "=)"
     }
 
     @Test
     fun hi() {
         val name = "juan"
         val json = restTemplate.getForObject("$url/saludar/$name", String::class.java)
-        assertThat(json).isEqualTo("{\"name\":\"$name\",\"hi\":\"Hola $name\"}")
+        json `should be equal to` "{\"name\":\"$name\",\"hi\":\"Hola $name\"}"
     }
 
     @Test
-    @Throws(Exception::class)
     fun crear() {
         val user = UserDto("Ana")
         val json = restTemplate.postForObject("$url/crear", user, String::class.java)
-        assertThat(json).isEqualTo("=)")
+        json `should be equal to` "=)"
     }
+
 }
